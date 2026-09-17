@@ -1,0 +1,11 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {initialState,placeBets,quote,toggleSelection,type Selection} from '../src/data.ts';
+const a:Selection={fixtureId:'a',match:'A vs B',outcome:'A',odds:1.85};
+const b:Selection={fixtureId:'b',match:'C vs D',outcome:'D',odds:2.15};
+test('selection toggles off and replacement preserves one outcome per match',()=>{assert.deepEqual(toggleSelection([a],a),[]);const next={...a,outcome:'B',odds:4.2};assert.deepEqual(toggleSelection([a,b],next),[b,next]);});
+test('singles use a stake per selection; accumulators multiply odds',()=>{assert.equal(quote([a,b],10,'single').cost,20);assert.equal(quote([a,b],10,'single').potential,40);assert.equal(quote([a,b],10,'accumulator').cost,10);assert.ok(Math.abs(quote([a,b],10,'accumulator').potential-39.775)<.0001);});
+test('placing singles deducts combined stakes and creates independent pending bets',()=>{const result=placeBets(initialState,[a,b],10,'single');assert.equal(result.balance,980);assert.equal(result.bets.length,2);assert.equal(result.bets[0].status,'Pending');assert.equal(result.bets[0].potential,18.5);assert.equal(initialState.balance,1000);});
+test('accumulator is one pending bet and rounded to cents',()=>{const result=placeBets(initialState,[a,b],10,'accumulator');assert.equal(result.balance,990);assert.equal(result.bets.length,1);assert.equal(result.bets[0].potential,39.78);});
+test('valid decimal stakes are not rejected by floating point precision',()=>{assert.equal(placeBets(initialState,[a],.29,'single').balance,999.71);});
+test('invalid stakes, insufficient balance, empty slip and repeated matches reject',()=>{for(const n of [0,-1,NaN,Infinity,.001,1001])assert.throws(()=>placeBets(initialState,[a],n,'single'));assert.throws(()=>placeBets(initialState,[],10,'single'));assert.throws(()=>placeBets(initialState,[a,a],10,'single'));assert.throws(()=>placeBets({...initialState,balance:15},[a,b],10,'single'));});
