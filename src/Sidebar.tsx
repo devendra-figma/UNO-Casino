@@ -15,11 +15,12 @@ const playLinks = [
 
 export function Sidebar({collapsed,menu,toggle,bets,favorites,account,info}:SidebarProps){
   const location=useLocation();
+  const [hintVisible,setHintVisible]=useState(false);
   const [hint,setHint]=useState<{text:string;top:number}|null>(null);
-  useEffect(()=>{setHint(null);},[collapsed,menu,location.pathname,location.search]);
-  useEffect(()=>{const dismiss=()=>setHint(null);const key=(e:KeyboardEvent)=>{if(e.key==='Escape')dismiss();};window.addEventListener('resize',dismiss);window.addEventListener('scroll',dismiss,true);window.addEventListener('keydown',key);return()=>{window.removeEventListener('resize',dismiss);window.removeEventListener('scroll',dismiss,true);window.removeEventListener('keydown',key);};},[]);
-  function show(text:string,e:MouseEvent<HTMLElement>|FocusEvent<HTMLElement>){if(collapsed&&window.matchMedia('(min-width:981px)').matches)setHint({text,top:Math.min(innerHeight-52,Math.max(8,e.currentTarget.getBoundingClientRect().top+4))});}
-  const hintEvents=(text:string)=>({onMouseEnter:(e:MouseEvent<HTMLElement>)=>show(text,e),onMouseLeave:()=>setHint(null),onFocus:(e:FocusEvent<HTMLElement>)=>show(text,e),onBlur:()=>setHint(null)});
+  useEffect(()=>{setHintVisible(false);},[collapsed,menu,location.pathname,location.search]);
+  useEffect(()=>{const dismiss=()=>setHintVisible(false);const key=(e:KeyboardEvent)=>{if(e.key==='Escape')dismiss();};window.addEventListener('resize',dismiss);window.addEventListener('scroll',dismiss,true);window.addEventListener('keydown',key);return()=>{window.removeEventListener('resize',dismiss);window.removeEventListener('scroll',dismiss,true);window.removeEventListener('keydown',key);};},[]);
+  function show(text:string,e:MouseEvent<HTMLElement>|FocusEvent<HTMLElement>){if(collapsed&&window.matchMedia('(min-width:981px)').matches){setHintVisible(true);setHint({text,top:Math.min(innerHeight-52,Math.max(8,e.currentTarget.getBoundingClientRect().top+4))});}}
+  const hintEvents=(text:string)=>({onMouseEnter:(e:MouseEvent<HTMLElement>)=>show(text,e),onMouseLeave:()=>setHintVisible(false),onFocus:(e:FocusEvent<HTMLElement>)=>show(text,e),onBlur:()=>setHintVisible(false)});
   function active(to:string){const target=new URL(to,window.location.origin);return location.pathname===target.pathname&&location.search===target.search;}
   function item(to:string,label:string,icon:ReactNode,tone='gold',badge?:ReactNode){return <Link key={to} to={to} className={`sidebar-item tone-${tone} ${active(to)?'active':''}`} aria-label={label} aria-current={active(to)?'page':undefined} {...hintEvents(label)}><span className="sidebar-icon">{icon}</span><span className="nav-label">{label}</span>{badge}<ChevronRight className="nav-chevron" size={14}/></Link>;}
   return <><aside id="uno-sidebar" className={`sidebar polished-sidebar ${menu?'menu-open':''}`}>
@@ -40,7 +41,7 @@ export function Sidebar({collapsed,menu,toggle,bets,favorites,account,info}:Side
       <button className="sidebar-item" aria-label="Help and support" onClick={()=>info('help')} {...hintEvents('Help & support')}><span className="sidebar-icon"><CircleHelp size={18}/></span><span className="nav-label">Help & support</span></button>
       <div className="sidebar-locale"><span>English</span><span>USD <i/> Demo</span></div>
     </div>
-  </aside>{hint&&collapsed&&createPortal(<div className="sidebar-tooltip" style={{top:hint.top}} aria-hidden="true">{hint.text}</div>,document.body)}</>;
+  </aside>{hint&&collapsed&&createPortal(<div className="sidebar-tooltip" data-visible={hintVisible} style={{top:hint.top}} aria-hidden="true">{hint.text}</div>,document.body)}</>;
 }
 
 export function HomePromotions(){return <section className="home-promotions" aria-labelledby="home-promotions-title"><div className="section-heading"><div><h2 id="home-promotions-title"><Gift/> A little extra play</h2><p>Two ways to discover more. Demo offers only.</p></div><Link to="/promotions">All promotions <ChevronRight size={16}/></Link></div><div className="home-promo-grid">

@@ -33,3 +33,6 @@ Run `node tests/platform-check.mjs` for new routes at 360/390/768/1440px, sideba
 ## Navigation and homepage polish
 
 `src/Sidebar.tsx` groups Play and account destinations, matches active routes including query filters, and supplies keyboard/hover labels for the collapsed rail. The mobile drawer follows the actual header position and traps keyboard focus. `src/polish.css` contains the sidebar, match-card, curated game-row and compact promotion treatments. Homepage offers open the corresponding category and expanded offer details. The full game catalog is unchanged. Reduced-motion and pause settings are respected. `tests/polish-check.mjs` covers the new navigation, offer routing and layout behavior.
+## Smooth interaction motion
+
+`src/motion.css` coordinates 240ms controls, 420ms card transitions and 650ms artwork movement with a shared easing curve. Enter/leave transitions reverse naturally; scaling is restrained, game overlays fade without animated blur, and sidebar labels fade out before being hidden. Reveal animations release their final transform so they do not block subsequent hover motion. Hover movement is suppressed for touch, and reduced-motion preferences disable transitions. `node tests/motion-check.mjs` verifies intermediate animation values, reversal, no overshoot, keyboard/touch previews and reduced motion.

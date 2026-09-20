@@ -1,0 +1,60 @@
+/* One reversible motion language: quick controls, soft card lifts, slower artwork. */
+:root{--motion-ease:cubic-bezier(.22,1,.36,1);--motion-control:240ms;--motion-card:420ms;--motion-art:650ms}
+.reveal.is-visible{animation-fill-mode:backwards}
+button,a,input,select{transition:color var(--motion-control) ease,background-color var(--motion-control) ease,border-color var(--motion-control) ease,box-shadow var(--motion-control) ease}
+.gold-button,.outline-button,.icon-button,.favorite,.header-wallet,.floating-slip,.section-heading>a,.tabs>button,.sport-picker>button,.stake-presets>button,.odds-row button,.spotlight-card .odds-row button,.restored-matches .odds-row button{transition:transform var(--motion-control) var(--motion-ease),color var(--motion-control) ease,background-color var(--motion-control) ease,border-color var(--motion-control) ease,box-shadow var(--motion-control) ease}
+.category-tile,.game-art,.match-card,.restored-matches .spotlight-card,.home-promo,.promotion-card,.crash-card,.sidebar-offer{transition:transform var(--motion-card) var(--motion-ease),border-color 320ms ease,box-shadow var(--motion-card) ease,background-color 320ms ease}
+.category-object img,.game-art .game-img,.home-promo img,.promotion-art img,.crash-preview>img,.sidebar-offer>img{transition:transform var(--motion-art) var(--motion-ease)}
+.category-object img{--art-tilt:-3deg;transform:translateY(0) rotate(var(--art-tilt)) scale(1)}
+.tile-emerald .category-object img{--art-tilt:3deg;transform:translateY(0) rotate(var(--art-tilt)) scale(1)}
+.tile-violet .category-object img{--art-tilt:-5deg;transform:translateY(0) rotate(var(--art-tilt)) scale(1)}
+.category-arrow{transition:transform var(--motion-card) var(--motion-ease),background-color 300ms ease}
+.gold-button>svg,.outline-button>svg,.section-heading>a>svg,.promo-action svg,.text-link svg,.offer-details svg,.promotion-terms a>svg,.account-options svg{transition:transform 360ms var(--motion-ease),translate 360ms var(--motion-ease)}
+.polished-sidebar .sidebar-item{transition:background-color 280ms ease,border-color 280ms ease,color 280ms ease}
+.polished-sidebar .sidebar-item.active{background-image:linear-gradient(95deg,#bba05a22,#bba05a08);background-color:transparent}
+.polished-sidebar .sidebar-item.active:hover{background-image:linear-gradient(95deg,#bba05a22,#bba05a08);background-color:#ffffff04}
+.sidebar-icon{transition:transform 360ms var(--motion-ease),background-color 280ms ease,color 280ms ease}
+.nav-chevron{translate:-3px 0;transition:opacity 260ms ease,translate 360ms var(--motion-ease)}
+.sidebar-item:is(.active,:hover,:focus-visible) .nav-chevron{translate:0 0}
+.sidebar-tooltip{opacity:0;transform:translateX(-5px);visibility:hidden;transition:opacity 180ms ease,transform 240ms var(--motion-ease),visibility 0s linear 180ms}
+.sidebar-tooltip[data-visible=true]{opacity:1;transform:translateX(0);visibility:visible;transition-delay:0s}
+@starting-style{.sidebar-tooltip[data-visible=true]{opacity:0;transform:translateX(-5px)}}
+.game-art .play-overlay{backdrop-filter:none;-webkit-backdrop-filter:none;background:linear-gradient(180deg,#08100bd9,#09110bb8);transition:opacity 360ms ease;pointer-events:none}
+.game-art .hover-title,.game-art .hover-provider{transition:transform 420ms var(--motion-ease),opacity 300ms ease;transition-delay:0s}
+.game-art .hover-title{transform:translateY(-5px)}
+.game-art .hover-provider{transform:translateY(5px)}
+.game-art .play-btn-circle{transform:scale(.94);transition:transform 480ms var(--motion-ease),background-color 280ms ease,border-color 280ms ease,box-shadow 360ms ease}
+.game-art:is(:hover,:focus-visible,.active-hover) .hover-title,.game-art:is(:hover,:focus-visible,.active-hover) .hover-provider{opacity:1;transform:translateY(0);transition-delay:45ms}
+.game-art:is(:hover,:focus-visible,.active-hover) .play-btn-circle{transform:scale(1.08)}
+.game-art .game-tag,.leaderboard-table tr td{transition:opacity 260ms ease,background-color 280ms ease}
+.favorite svg{transition:transform 300ms var(--motion-ease),color 240ms ease}
+.app-shell{transition:grid-template-columns 380ms var(--motion-ease)}
+@media(hover:hover) and (pointer:fine){
+ .category-tile:hover,.game-art:hover{transform:translateY(-3px)}
+ .category-tile:hover .category-object img{transform:translateY(-3px) rotate(calc(var(--art-tilt) + 2deg)) scale(1.025);filter:drop-shadow(0 12px 11px #0607074d)}
+ .category-tile:hover .category-arrow{transform:rotate(12deg)}
+ .game-art:hover .game-img,.game-art.active-hover .game-img{transform:scale(1.045)}
+ .home-promo:hover img{transform:translateY(-3px) rotate(2deg)}
+ .home-promo:hover .promo-action svg{translate:2px -2px}
+ .promotion-card:hover .promotion-art img{transform:translateY(-3px) rotate(2deg)}
+ .crash-preview:hover>img{transform:translate(3px,-4px)}
+ .sidebar-offer:hover>img{transform:rotate(3deg) scale(1.025)}
+ .favorite:hover{transform:scale(1.06)}
+ .gold-button:hover>svg,.outline-button:hover>svg,.section-heading>a:hover>svg,.promotion-terms a:hover>svg{transform:translateX(2px)}
+}
+/* Press feedback stays short and never delays the click action. */
+.gold-button:active,.outline-button:active,.category-tile:active,.game-art:active{transform:scale(.99);transition-duration:120ms}
+@media(hover:none),(pointer:coarse){
+ .category-tile:hover,.game-art:hover,.restored-matches .spotlight-card:hover,.favorite:hover{transform:none}
+ .category-tile:hover .category-object img{transform:rotate(var(--art-tilt));filter:drop-shadow(0 12px 11px #0607074d)}
+ .game-art:hover .game-img,.home-promo:hover img,.promotion-card:hover .promotion-art img,.crash-preview:hover>img,.sidebar-offer:hover>img{transform:none}
+ .category-tile:hover .category-arrow{transform:none}
+ .game-art:hover:not(:focus-visible) .play-overlay{opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{transition:none!important;animation:none!important}
+ .category-tile:hover,.game-art:hover,.restored-matches .spotlight-card:hover,.favorite:hover,.gold-button:hover,.odds-row button:hover,.game-art .game-img,.home-promo:hover img,.promotion-card:hover .promotion-art img,.crash-preview:hover>img,.sidebar-offer:hover>img{transform:none!important}
+ .category-tile:hover .category-object img{transform:rotate(var(--art-tilt))!important}
+ .category-tile:hover .category-arrow{transform:none!important}
+}
+.motion-paused *,.motion-paused *::before,.motion-paused *::after{transition:none!important}
