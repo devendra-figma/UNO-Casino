@@ -6,4 +6,5 @@ import './styles.css';
 import './experience.css';
 import './category-tiles.css';
 import './platform-extras.css';
+import './polish.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><BrowserRouter><App /></BrowserRouter></React.StrictMode>);

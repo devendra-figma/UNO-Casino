@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowDownLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, Gift, Heart, LogOut, Rocket, ShieldCheck, Wallet } from 'lucide-react';
 import { money, type Game } from './data';
 
@@ -20,8 +20,10 @@ const offers = [
 ];
 
 export function Promotions(){
-  const [filter,setFilter]=useState('All promotions');
-  const [expanded,setExpanded]=useState<string|null>(null);
+  const [params]=useSearchParams();
+  const initialFilter=params.get('category')||'All promotions';
+  const [filter,setFilter]=useState(['All promotions','Casino','Sports','Live casino','Crash'].includes(initialFilter)?initialFilter:'All promotions');
+  const [expanded,setExpanded]=useState<string|null>(params.get('offer'));
   const visible=offers.filter(o=>filter==='All promotions'||o.category===filter);
   return <>
     <div className="page-title"><span className="eyebrow">THE EXTRA MOMENTS</span><h1>Promotions<span>.</span></h1><p>A little more to explore across every part of UNO.</p></div>
