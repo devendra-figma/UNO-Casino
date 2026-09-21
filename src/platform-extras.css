@@ -110,6 +110,34 @@
 .deposit-success{display:flex;align-items:center;gap:9px;color:#b2edc3;background:#25473466;padding:12px;border-radius:8px;font-size:14px;line-height:1.5}
 .deposit-panel .stake-presets>button{min-height:44px}
 @keyframes rocket-arrive{from{opacity:0;transform:translate(-25px,35px) rotate(-8deg)}to{opacity:1;transform:none}}
+
+/* ── Category banners (Casino · Sports · Live casino) ── */
+/* Same structure as .crash-banner; color identity per category */
+.category-banner{display:flex;align-items:center;position:relative;isolation:isolate;min-height:340px;overflow:hidden;padding:42px;border-radius:22px;border:1px solid transparent;margin:0 0 28px}
+.category-banner>div{width:60%;position:relative;z-index:1}
+.category-banner h1{font-size:clamp(36px,4vw,60px);line-height:1.08;letter-spacing:-2px;margin:20px 0}
+.category-banner p{font-size:16px;max-width:360px;line-height:1.6}
+.category-banner>img{position:absolute;width:44%;height:115%;object-fit:contain;right:0;top:-8%;filter:drop-shadow(0 20px 30px #0007);animation:rocket-arrive .85s ease-out both}
+.banner-demo{display:flex;align-items:center;gap:8px;font-size:12px;margin-top:22px}
+
+/* Gold — Casino */
+.banner-gold{border-color:#c39b5358;background:radial-gradient(ellipse at 78% 28%,#eac98542,transparent 62%),linear-gradient(110deg,#2a2016,#4a3b1c)}
+.banner-gold h1 em{color:#f5dfa8;font-style:normal}
+.banner-gold p{color:#ddd0b2}
+.banner-gold .banner-demo{color:#c8b48a}
+
+/* Emerald — Sports */
+.banner-emerald{border-color:#40c79358;background:radial-gradient(ellipse at 78% 28%,#81f0c142,transparent 62%),linear-gradient(110deg,#182a20,#1a4d34)}
+.banner-emerald h1 em{color:#9df5cb;font-style:normal}
+.banner-emerald p{color:#bfdece}
+.banner-emerald .banner-demo{color:#82c5a5}
+
+/* Violet — Live Casino */
+.banner-violet{border-color:#aa77e358;background:radial-gradient(ellipse at 78% 28%,#d5afff42,transparent 62%),linear-gradient(110deg,#241c38,#4a2d70)}
+.banner-violet h1 em{color:#ddb8ff;font-style:normal}
+.banner-violet p{color:#c9bae0}
+.banner-violet .banner-demo{color:#b598d5}
+
 @media(hover:hover){.promotion-card:hover .promotion-art img{transform:translateY(-5px) rotate(4deg)}.crash-preview:hover>img{transform:translate(6px,-8px)}.header-wallet:hover{border-color:#c5ab7055}}
 @media(min-width:981px){
  .app-shell.sidebar-collapsed{grid-template-columns:80px minmax(0,1fr)}
@@ -122,7 +150,7 @@
  .sidebar-collapsed .sidebar nav>a:focus-visible{outline-offset:0}
 }
 @media(max-width:1250px){.top-nav{gap:14px;font-size:13px}.topbar{gap:20px}.topbar .brand-area{width:110px;min-width:90px}.top-actions{gap:7px}.header-avatar{display:none}.header-wallet{padding:6px 9px}.header-wallet .coin-icon{display:none}.promotions-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.restored-matches{grid-template-columns:repeat(2,minmax(0,1fr))}.category-label h2{font-size:20px}.category-label p{display:none}.category-object{height:125px}.category-label{padding:8px 14px 14px}.category-arrow{width:28px;height:28px}.category-arrow svg{width:17px}.crash-preview>div{padding:12px 16px 20px}.crash-preview h3{font-size:20px}.crash-preview>img{height:160px}.crash-grid{gap:12px}}
-@media(max-width:980px){.sidebar-toggle{display:none}.sidebar-heading{min-height:20px}.top-nav>a:last-child{display:none}.header-divider{display:none}.crash-banner{padding:32px}.category-label h2{font-size:21px}.category-arrow{display:none}}
+@media(max-width:980px){.sidebar-toggle{display:none}.sidebar-heading{min-height:20px}.top-nav>a:last-child{display:none}.header-divider{display:none}.crash-banner,.category-banner{padding:32px}.category-label h2{font-size:21px}.category-arrow{display:none}}
 @media(max-width:700px){
  .category-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 30px}
  .category-object{height:125px;margin:0 5px}
@@ -166,10 +194,14 @@
  .crash-banner>div{width:100%}.crash-banner h1{font-size:43px;margin:18px 0}.crash-banner p{max-width:215px;font-size:14px}.crash-banner .eyebrow{font-size:10px}
  .crash-banner>img{width:64%;height:53%;top:auto;right:-8%;bottom:-2%;opacity:.95}
  .crash-demo{max-width:150px;line-height:1.7;margin-top:32px;align-items:flex-start}.crash-demo svg{flex-shrink:0;margin-top:3px}
+ .category-banner{min-height:420px;padding:26px;align-items:flex-start}
+ .category-banner>div{width:100%}.category-banner h1{font-size:41px;margin:16px 0}.category-banner p{max-width:220px;font-size:14px}
+ .category-banner>img{width:60%;height:52%;top:auto;right:-6%;bottom:-2%;opacity:.92}
+ .banner-demo{max-width:155px;line-height:1.7;margin-top:28px;align-items:flex-start}.banner-demo>svg{flex-shrink:0;margin-top:3px}
  .crash-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
  .crash-preview>img{height:150px}.crash-preview>div{padding:10px 15px 18px}.crash-preview h3{font-size:20px;margin-bottom:13px}.crash-preview>div>span:first-child{font-size:10px}.crash-play{font-size:11px;gap:5px}
  .crypto-wallet{padding:23px}.crypto-wallet>strong{font-size:36px}.account-identity{gap:9px}.account-identity div>span{font-size:10px}.account-status{font-size:9px}
 }
 @media(max-width:359px){.category-object{height:110px}.category-label{padding:2px 12px 15px}.category-label h2{font-size:17px}.category-arrow{width:24px;height:24px}.restored-matches{grid-template-columns:1fr}.restored-matches .teams{grid-template-columns:1fr 65px 1fr}.restored-matches .score{grid-column:2;grid-row:1;flex-direction:column}.restored-matches .odds-row button{flex-direction:row;gap:10px}.crash-preview h3{font-size:17px}.crash-play{font-size:10px}.deposit-asset{padding:12px;gap:9px}.deposit-asset>.offer-demo{display:none}}
-@media(prefers-reduced-motion:reduce){.crash-banner>img,.promotion-art img,.crash-preview>img{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){.crash-banner>img,.category-banner>img,.promotion-art img,.crash-preview>img{animation:none!important;transition:none!important}}
 .motion-paused .crash-banner>img,.motion-paused .promotion-art img,.motion-paused .crash-preview>img{animation:none!important;transition:none!important}

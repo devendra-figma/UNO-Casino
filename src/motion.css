@@ -1,5 +1,5 @@
 /* One reversible motion language: quick controls, soft card lifts, slower artwork. */
-:root{--motion-ease:cubic-bezier(.22,1,.36,1);--motion-control:240ms;--motion-card:420ms;--motion-art:650ms}
+:root{--motion-ease:cubic-bezier(.22,1,.36,1);--motion-control:170ms;--motion-card:300ms;--motion-art:520ms}
 .reveal.is-visible{animation-fill-mode:backwards}
 button,a,input,select{transition:color var(--motion-control) ease,background-color var(--motion-control) ease,border-color var(--motion-control) ease,box-shadow var(--motion-control) ease}
 .gold-button,.outline-button,.icon-button,.favorite,.header-wallet,.floating-slip,.section-heading>a,.tabs>button,.sport-picker>button,.stake-presets>button,.odds-row button,.spotlight-card .odds-row button,.restored-matches .odds-row button{transition:transform var(--motion-control) var(--motion-ease),color var(--motion-control) ease,background-color var(--motion-control) ease,border-color var(--motion-control) ease,box-shadow var(--motion-control) ease}
@@ -19,7 +19,7 @@ button,a,input,select{transition:color var(--motion-control) ease,background-col
 .sidebar-tooltip{opacity:0;transform:translateX(-5px);visibility:hidden;transition:opacity 180ms ease,transform 240ms var(--motion-ease),visibility 0s linear 180ms}
 .sidebar-tooltip[data-visible=true]{opacity:1;transform:translateX(0);visibility:visible;transition-delay:0s}
 @starting-style{.sidebar-tooltip[data-visible=true]{opacity:0;transform:translateX(-5px)}}
-.game-art .play-overlay{backdrop-filter:none;-webkit-backdrop-filter:none;background:linear-gradient(180deg,#08100bd9,#09110bb8);transition:opacity 360ms ease;pointer-events:none}
+.game-art .play-overlay{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:linear-gradient(180deg,rgba(3,7,5,0.90) 0%,rgba(5,10,8,0.82) 45%,rgba(7,13,10,0.85) 100%);transition:opacity 360ms ease;pointer-events:none}
 .game-art .hover-title,.game-art .hover-provider{transition:transform 420ms var(--motion-ease),opacity 300ms ease;transition-delay:0s}
 .game-art .hover-title{transform:translateY(-5px)}
 .game-art .hover-provider{transform:translateY(5px)}
@@ -58,3 +58,187 @@ button,a,input,select{transition:color var(--motion-control) ease,background-col
  .category-tile:hover .category-arrow{transform:none!important}
 }
 .motion-paused *,.motion-paused *::before,.motion-paused *::after{transition:none!important}
+
+/* ─── Premium Hover Enhancements ────────────────────────────────────────── */
+
+/* 1. General tabs (.tabs > button) — casino, sports, bet-slip, sports toolbar */
+.tabs > button {
+  position: relative;
+}
+.tabs > button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px 2px 0 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--motion-control) var(--motion-ease), opacity var(--motion-control) ease;
+  opacity: 0;
+}
+.tabs > button.active::after {
+  transform: scaleX(1);
+  opacity: 0.75;
+}
+@media(hover:hover) and (pointer:fine) {
+  .tabs > button:hover:not(.active) {
+    background: #2d3329;
+    color: #d8dfd1;
+  }
+}
+
+/* 2. Leaderboard segment tabs */
+.leaderboard-tabs button {
+  transition: background-color var(--motion-control) ease, color var(--motion-control) ease, box-shadow var(--motion-control) ease;
+}
+.leaderboard-tabs button.active {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px #4a513f;
+}
+@media(hover:hover) and (pointer:fine) {
+  .leaderboard-tabs button:hover:not(.active) {
+    background: #292e28;
+    color: #d8dfd0;
+  }
+}
+
+/* 3. Sport picker buttons — emoji lift on hover */
+.sport-picker > button {
+  transition: background-color var(--motion-control) ease, border-color var(--motion-control) ease, color var(--motion-control) ease, transform var(--motion-control) var(--motion-ease);
+}
+.sport-picker > button > span:first-child {
+  display: inline-block;
+  transition: transform var(--motion-control) var(--motion-ease);
+}
+@media(hover:hover) and (pointer:fine) {
+  .sport-picker > button:hover:not(.active) {
+    background: #252b22;
+    border-color: #4a5340;
+    color: #d8dfd0;
+  }
+  .sport-picker > button:hover > span:first-child {
+    transform: translateY(-2px);
+  }
+}
+
+/* 4. Top navigation — animated underline from center on hover */
+.top-nav > a {
+  overflow: visible;
+}
+.top-nav > a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #b8c4b0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 280ms var(--motion-ease), opacity 280ms ease;
+  opacity: 0;
+  pointer-events: none;
+}
+@media(hover:hover) and (pointer:fine) {
+  .top-nav > a:hover:not(.active)::before {
+    transform: scaleX(1);
+    opacity: 0.6;
+  }
+}
+
+/* 5. Section heading "All games / All sports" link — pill nudge on hover */
+.section-heading > a {
+  transition: background-color var(--motion-control) ease, border-color var(--motion-control) ease, color var(--motion-control) ease, transform var(--motion-control) var(--motion-ease);
+}
+@media(hover:hover) and (pointer:fine) {
+  .section-heading > a:hover {
+    transform: translateX(2px);
+  }
+}
+
+/* 6. Odds buttons — text warms on hover to reinforce selectability */
+@media(hover:hover) and (pointer:fine) {
+  .odds-row button:hover > strong {
+    color: #f0d397;
+    transition: color var(--motion-control) ease;
+  }
+  .odds-row button:hover > span {
+    color: #c5cdbf;
+    transition: color var(--motion-control) ease;
+  }
+}
+
+/* 7. Home promo cards — card-level lift on hover */
+@media(hover:hover) and (pointer:fine) {
+  .home-promo:hover {
+    transform: translateY(-2px);
+    border-color: rgba(201, 169, 85, 0.38);
+  }
+}
+
+/* 8. Standard match cards — lift + border warm (mirror spotlight card behavior) */
+.match-card {
+  transition: transform var(--motion-card) var(--motion-ease), border-color 320ms ease, box-shadow var(--motion-card) ease;
+}
+@media(hover:hover) and (pointer:fine) {
+  .match-card:not(.spotlight-card):hover {
+    transform: translateY(-2px);
+    border-color: #4a5444;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.32);
+  }
+}
+
+/* 9. Leaderboard table rows — faint gold left-edge inset accent */
+.leaderboard-table td {
+  transition: background-color 260ms ease, box-shadow 260ms ease;
+}
+@media(hover:hover) and (pointer:fine) {
+  .leaderboard-table tr:hover td:first-child {
+    box-shadow: inset 2px 0 0 rgba(223, 189, 127, 0.22);
+  }
+}
+
+/* 10. Icon buttons — warm white instead of saturated gold */
+.icon-button:hover {
+  color: #e8dfc8;
+}
+
+/* 11. Footer "Play responsibly" button — gap breathes on hover */
+.footer-top > button {
+  transition: color var(--motion-control) ease, gap var(--motion-control) ease;
+}
+.footer-top > button:hover {
+  color: #e8dfc8;
+  gap: 10px;
+}
+
+/* 12. Header wallet — background lightens + chevron hints at opening */
+.header-wallet {
+  transition: background-color var(--motion-control) ease, border-color var(--motion-control) ease;
+}
+.header-wallet > svg:last-child {
+  transition: transform var(--motion-control) var(--motion-ease);
+}
+@media(hover:hover) and (pointer:fine) {
+  .header-wallet:hover {
+    background: #252b25;
+  }
+  .header-wallet:hover > svg:last-child {
+    transform: rotate(-12deg);
+  }
+}
+
+/* ─── Reduced-motion overrides for new enhancements ─────────────────────── */
+@media(prefers-reduced-motion:reduce) {
+  .tabs > button::after,
+  .top-nav > a::before { transition: none!important; }
+  .sport-picker > button > span:first-child,
+  .section-heading > a,
+  .match-card,
+  .header-wallet > svg:last-child { transition: none!important; transform: none!important; }
+  .match-card:not(.spotlight-card):hover,
+  .home-promo:hover,
+  .section-heading > a:hover { transform: none!important; }
+}

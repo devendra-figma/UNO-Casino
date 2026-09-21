@@ -8,4 +8,5 @@ import './category-tiles.css';
 import './platform-extras.css';
 import './polish.css';
 import './motion.css';
+import './theme.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><BrowserRouter><App /></BrowserRouter></React.StrictMode>);

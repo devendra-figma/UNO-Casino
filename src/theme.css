@@ -1,0 +1,80 @@
+/* Theme-only overrides. Geometry and the approved dark palette stay in the original stylesheets. */
+:root[data-theme=light]{color-scheme:light;--gold:#89631f;--muted:#606a62;--panel:#fff;--line:#d5dad2;--green:#267552;background:#f5f4ef;color:#222a24}
+/* Only the new control has geometry; no existing components are resized. */
+.theme-toggle{flex-shrink:0}
+/* A short color crossfade does not replace any existing hover/motion transitions. */
+@supports (view-transition-name:root){::view-transition-old(root),::view-transition-new(root){animation-duration:140ms;animation-timing-function:ease-out}}
+:root[data-theme=light] :is(.topbar,.mobile-nav,.modal,.bet-slip,.history-card,.promotion-card,.leaderboard-card,.toast){background:#fff;color:#222a24;border-color:var(--line);box-shadow:0 5px 24px #2633220a}
+:root[data-theme=light] .demo-strip{background:#e9e9df;color:#555e4c}
+:root[data-theme=light] .polished-sidebar{background:linear-gradient(170deg,#f9faf5,#eef2ec 60%);border-color:#d5dad2}
+:root[data-theme=light] :is(.top-nav>a,.sidebar-item,.polished-sidebar .sidebar-item,.mobile-nav>a,.mobile-nav>button){color:#515e50}
+:root[data-theme=light] :is(.top-nav>a.active,.mobile-nav>a.active){color:var(--gold)}
+:root[data-theme=light] .polished-sidebar .sidebar-item{--nav-tone:#89631f}
+:root[data-theme=light] .polished-sidebar .tone-green{--nav-tone:#267552}
+:root[data-theme=light] .polished-sidebar .tone-violet{--nav-tone:#78519c}
+:root[data-theme=light] .polished-sidebar .tone-coral{--nav-tone:#a55038}
+:root[data-theme=light] .polished-sidebar .tone-blue{--nav-tone:#386e96}
+:root[data-theme=light] .polished-sidebar .tone-rose{--nav-tone:#9a5066}
+:root[data-theme=light] .polished-sidebar .sidebar-item.active{color:#79581d;background:linear-gradient(95deg,#e9d7ab88,#e9d7ab22);border-color:#c8ad7060;box-shadow:inset 2px 0 #a6823c}
+:root[data-theme=light] :is(.polished-sidebar .sidebar-item:hover,.icon-button:hover,.search-results button:hover){background:#e9eee5;color:#614c26;border-color:#cbd5c5}
+:root[data-theme=light] :is(.sidebar-label,.sidebar-group-label,.sidebar-locale,.side-age,.sidebar-utilities .sidebar-icon,.nav-chevron){color:#5b6956}
+:root[data-theme=light] :is(.sidebar-utilities,.account-group,.side-age,.account-options>*,.wallet-asset,.offer-details){border-color:#d5dad2}
+:root[data-theme=light] .polished-sidebar .sidebar-toggle{background:#edf0e8;color:#53634d;border-color:#d5dad2}
+:root[data-theme=light] .side-count{background:#eaddbd;color:#72521d}
+:root[data-theme=light] .side-live{color:#267552;background:#e1f1e8;border-color:#b4d7c3}
+:root[data-theme=light] .sidebar-offer{background:radial-gradient(ellipse at right,#d8b35a33,transparent 75%),linear-gradient(130deg,#f3ead7,#edf1e8);border-color:#d4bf8b}
+:root[data-theme=light] .sidebar-offer :is(small,strong,.nav-label>span){color:#765925}
+:root[data-theme=light] :is(.sidebar-tooltip,.sidebar-tooltip:before){background:#fffaf0;color:#614b26;border-color:#cdbb90;box-shadow:0 6px 22px #26332215}
+:root[data-theme=light] :is(.section-heading p,.game-meta>span,.page-title p,.results-label,.results-label>span,.activity-demo,.footer-bottom,.footer-top,.footer-top>button,.footer-bottom p,.footer-bottom>span:last-child,.search-results small,.slip-empty p,.slip-empty>span,.slip-disclaimer,.wallet-note,.demo-login p,.demo-login small,.account-identity div>span,.deposit-asset div>span,.deposit-balance){color:#606a62}
+:root[data-theme=light] :is(.section-heading>a,.search-field,.select-wrap,select,.stake-input,.stake-presets button,.header-wallet,.tabs,.sport-picker button,.leaderboard-tabs,.bets-summary,.deposit-asset,.promotion-terms){background:#edf0e9;color:#344230;border-color:#d1d8cb}
+:root[data-theme=light] :is(input,select){color:#263423}
+:root[data-theme=light] input::placeholder{color:#697364}
+:root[data-theme=light] :is(.tabs button,.leaderboard-tabs button){color:#5b6854}
+:root[data-theme=light] :is(.tabs button.active,.leaderboard-tabs button.active,.sport-picker button.active){background:#e8dbbb;color:#684d1e;border-color:#baa06c}
+:root[data-theme=light] :is(.tabs button:hover,.leaderboard-tabs button:hover,.sport-picker button:hover){background:#e4e9dd;color:#4c5b40}
+:root[data-theme=light] :is(.section-heading>a:hover,.stake-presets button:hover){background:#e5e9dd;color:#685324;border-color:#baa06c}
+:root[data-theme=light] :is(.header-wallet strong,.crypto-wallet>strong,.deposit-balance>strong){color:#745622}
+:root[data-theme=light] .header-wallet small{color:#606a62}
+:root[data-theme=light] .header-wallet:hover{background:#e4e9dd}
+:root[data-theme=light] :is(.match-card,.restored-matches .spotlight-card,.restored-matches .is-live,.restored-matches .is-upcoming,.sports-matches .match-card){background:linear-gradient(140deg,#f5faf5,#e9f1e9)!important;border-color:#c4d8c7!important;box-shadow:inset 0 1px 0 #fff,0 5px 18px #233a2208!important}
+:root[data-theme=light] :is(.match-top,.spotlight-card .match-top,.match-demo,.restored-matches .match-demo){border-color:#cddcce}
+:root[data-theme=light] :is(.team-name,.teams>div:not(.score)>span:last-child,.sports-matches .team-name){color:#293c2c!important}
+:root[data-theme=light] :is(.score strong,.restored-matches .score strong,.sports-matches .score strong){color:#326443!important;text-shadow:none}
+:root[data-theme=light] :is(.score small,.league-label,.match-top>span:first-child,.match-demo,.sports-matches .match-demo){color:#576f5b!important}
+:root[data-theme=light] :is(.live-pill-badge,.spotlight-card .live-pill-badge,.sports-matches .live-pill-badge){background:#d9efdf!important;color:#22683e!important;border-color:#a8ccb2!important;box-shadow:none!important}
+:root[data-theme=light] .upcoming-pill-badge{background:#e4ebdf!important;color:#52604b!important;border-color:#c6d0bf!important}
+:root[data-theme=light] .vs-badge{background:#e9eedf;color:#72602b;border-color:#c6caaf;box-shadow:none}
+:root[data-theme=light] :is(.odds-row button,.restored-matches .odds-row button,.sports-matches .odds-row button){background:#fff!important;border-color:#c4d3c0!important;box-shadow:inset 0 1px 0 #fff!important}
+:root[data-theme=light] :is(.odds-row button>span,.sports-matches .odds-row button>span){color:#607054!important}
+:root[data-theme=light] :is(.odds-row button>strong,.sports-matches .odds-row button>strong){color:#7b5b23!important}
+:root[data-theme=light] .odds-row button:hover{background:#f5edda!important;border-color:#a98b4e!important}
+:root[data-theme=light] .odds-row button.selected{background:linear-gradient(140deg,#e7cc91,#b69a61)!important;border-color:#aa853d!important}
+:root[data-theme=light] .odds-row button.selected>*{color:#1d261b!important}
+:root[data-theme=light] :is(.leaderboard-table th,.cell-player,.cell-mult,.leaderboard-table .negative){color:#606a62}
+:root[data-theme=light] :is(.leaderboard-table td,.leaderboard-table th,.leaderboard-header,.history-selection,.history-totals,.slip-selection,footer,.footer-bottom){border-color:#d5dad2}
+:root[data-theme=light] .leaderboard-table tr:hover{background:#eef2e8}
+:root[data-theme=light] :is(.cell-game,.cell-bet,.history-selection strong){color:#293326}
+:root[data-theme=light] :is(.cell-profit.positive,.deposit-success,.account-status){color:#267552}
+:root[data-theme=light] :is(.game-icon-dot,.token-pill,.rank-badge,.pending){background:#e6eadb;color:#685524;border-color:#c9d0bc}
+:root[data-theme=light] :is(.crypto-wallet,.promo-intro){background:radial-gradient(ellipse at top right,#dfc78d55,transparent 75%),linear-gradient(140deg,#f4efdf,#edf2e8);border-color:#c9be9a;color:#645734;box-shadow:0 8px 24px #3341220a}
+:root[data-theme=light] :is(.crypto-wallet>div:first-child,.crypto-wallet>span,.wallet-asset small,.promotion-copy>p,.promotion-terms p){color:#606a62}
+:root[data-theme=light] :is(.promotion-copy>.eyebrow,.offer-details,.promotion-terms a){color:#89631f}
+:root[data-theme=light] :is(.promotion-card.tile-emerald .offer-details,.promotion-card.tile-emerald .eyebrow){color:#267552}
+:root[data-theme=light] :is(.promotion-card.tile-violet .offer-details,.promotion-card.tile-violet .eyebrow){color:#78519c}
+:root[data-theme=light] .deposit-success{background:#e1f1e5}
+:root[data-theme=light] .form-error{color:#a73131}
+:root[data-theme=light] .outline-button{background:#f6f5ed;color:#65512b;border-color:#b9ad8c}
+:root[data-theme=light] .outline-button:hover{background:#eee7d6;border-color:#89631f}
+/* Artwork panels retain their original rich colors and readable foregrounds. */
+:root[data-theme=light] :is(.uno-hero,.category-banner,.crash-banner,.home-promo,.category-tile,.crash-card){color:#f3f2ed;--gold:#e7c789}
+:root[data-theme=light] .uno-hero .outline-button{background:#1719197a;color:#f2f0e9;border-color:#ffffff39}
+:root[data-theme=light] .play-overlay{--gold:#e7c789;color:#e7c789}
+:root[data-theme=light] :is(.brand-area img,.small-brand img){mix-blend-mode:multiply!important}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+:root[data-theme=light] .leaderboard-header h2{color:#293326}
+:root[data-theme=light] .leaderboard-table td{color:#45533e}
+:root[data-theme=light] .leaderboard-table td.positive{color:#267552}
+:root[data-theme=light] .leaderboard-table tr:hover td{background:#eef2e8}
+:root[data-theme=light] .game-meta h3{color:#293326!important}
+:root[data-theme=light] .game-meta>span{color:#606a62!important}
+:root[data-theme=light] .section-kicker{color:#89631f}
