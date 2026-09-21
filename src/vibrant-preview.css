@@ -1,18 +1,18 @@
 /* TEMPORARY CLIENT PREVIEW. All rules are scoped; remove this import and its themes.ts entry to retire it.
    Tokens define the palette; adapters below cover legacy hardcoded colors without changing geometry. */
 :root[data-theme=vibrant]{
- --preview-page:#171c38;--preview-panel:#222a49;--preview-raised:#2b3457;--preview-hover:#35416c;
- --preview-line:#48567f;--preview-text:#f0f3ff;--preview-muted:#b6c1df;
+ --preview-page:#13141d;--preview-panel:#1d1f2c;--preview-raised:#282b3c;--preview-hover:#34384d;
+ --preview-line:#45485f;--preview-text:#f0f3ff;--preview-muted:#b6c1df;
  --preview-accent:#b8a4ff;--preview-cyan:#79e0f2;--preview-pink:#f2a5da;
  --preview-action:linear-gradient(115deg,#6048c9,#3567c9);
  --preview-action-hover:linear-gradient(115deg,#7158dc,#4378db);
- --preview-banner:linear-gradient(120deg,#272754,#204764);
- --preview-shadow:0 5px 18px #0d123333;
+ --preview-banner:linear-gradient(120deg,#282439,#233440);
+ --preview-shadow:0 5px 18px #080a1633;
  --gold:var(--preview-accent);--muted:var(--preview-muted);--panel:var(--preview-panel);--line:var(--preview-line);--green:var(--preview-cyan);
  color-scheme:dark;color:var(--preview-text);background:var(--preview-page);
 }
 :root[data-theme=vibrant] :is(.topbar,.mobile-nav,.modal,.bet-slip,.history-card,.promotion-card,.leaderboard-card,.toast){background:var(--preview-panel);color:var(--preview-text);border-color:var(--preview-line);box-shadow:var(--preview-shadow)}
-:root[data-theme=vibrant] .demo-strip{background:#262d4b;color:var(--preview-muted)}
+:root[data-theme=vibrant] .demo-strip{background:#20222f;color:var(--preview-muted)}
 :root[data-theme=vibrant] .polished-sidebar{background:var(--preview-panel);border-color:var(--preview-line)}
 :root[data-theme=vibrant] :is(.top-nav>a,.polished-sidebar .sidebar-item,.mobile-nav>a,.mobile-nav>button){color:var(--preview-muted)}
 :root[data-theme=vibrant] :is(.top-nav>a.active,.mobile-nav>a.active,.section-kicker,.uno-eyebrow,.eyebrow){color:var(--preview-accent)}
@@ -73,8 +73,8 @@
 :root[data-theme=vibrant] .form-error{color:#ffb0be}
 :root[data-theme=vibrant] :is(.avatar,.login-emblem){background:linear-gradient(140deg,#53418b,#30385c);border-color:#9b8cce;color:#eee7ff}
 /* Original artwork and image rendering stay intact; only surrounding surfaces are themed. */
-:root[data-theme=vibrant] .uno-hero{background:#212342;border-color:#7666a0}
-:root[data-theme=vibrant] .uno-hero:after{background:linear-gradient(90deg,#202346f5 0%,#2527499c 35%,transparent 65%)}
+:root[data-theme=vibrant] .uno-hero{background:#1e1e2b;border-color:#7666a0}
+:root[data-theme=vibrant] .uno-hero:after{background:linear-gradient(90deg,#191923f5 0%,#2523309c 35%,transparent 65%)}
 :root[data-theme=vibrant] .uno-hero h1 em{color:var(--preview-cyan)}
 :root[data-theme=vibrant] :is(.uno-hero-copy>p,.hero-discovery,.hero-art-caption>span:last-child){color:var(--preview-muted)}
 :root[data-theme=vibrant] :is(.hero-art-caption,.hero-kicker){color:var(--preview-accent)}
@@ -101,3 +101,31 @@
 :root[data-theme=vibrant] .game-art:is(:hover,.active-hover){box-shadow:0 8px 22px #0b123b66,inset 0 0 0 1px #aa8eff66}
 :root[data-theme=vibrant] .game-art .play-overlay{background:linear-gradient(180deg,#1e2346ed,#24234bdb);color:var(--preview-text)}
 :root[data-theme=vibrant] .play-btn-circle{background:#6751b9;border-color:#ae99ff;color:#fff}
+/* Motion adapted only from the supplied ZIP: lift, art zoom, overlay fade and underline reveal.
+   Shared base transitions provide the same settling motion on hover exit. */
+:root[data-theme=vibrant]{--motion-control:280ms;--motion-card:420ms;--motion-art:520ms;--motion-ease:cubic-bezier(.25,.8,.25,1)}
+:root[data-theme=vibrant] :is(.category-tile,.game-art,.match-card,.restored-matches .spotlight-card,.home-promo,.promotion-card,.crash-card,.sidebar-offer){transition:transform var(--motion-card) var(--motion-ease),border-color var(--motion-card) ease,box-shadow var(--motion-card) ease,background-color var(--motion-card) ease}
+:root[data-theme=vibrant] :is(.tabs>button,.leaderboard-tabs>button,.sport-picker>button,.gold-button,.outline-button,.floating-slip,.section-heading>a){transition:transform var(--motion-control) var(--motion-ease),color var(--motion-control) ease,background-color var(--motion-control) ease,border-color var(--motion-control) ease,box-shadow var(--motion-control) ease}
+:root[data-theme=vibrant] .game-art .play-overlay{transition:opacity 440ms ease-in-out}
+:root[data-theme=vibrant] .game-art :is(.hover-title,.hover-provider){transition:transform 420ms var(--motion-ease),opacity 360ms ease;transition-delay:0s}
+:root[data-theme=vibrant] .game-art:is(:hover,:focus-visible,.active-hover) :is(.hover-title,.hover-provider){transition-delay:40ms}
+:root[data-theme=vibrant] .game-art .play-btn-circle{transition:transform 460ms var(--motion-ease),background-color 280ms ease,border-color 280ms ease,box-shadow 420ms ease}
+:root[data-theme=vibrant] :is(.category-object img,.game-art .game-img,.home-promo img,.promotion-art img,.crash-preview>img){transition:transform var(--motion-art) var(--motion-ease)}
+:root[data-theme=vibrant] .odds-row button>*{transition:color var(--motion-control) ease}
+:root[data-theme=vibrant] .tabs>button::after{transition:transform 320ms var(--motion-ease),opacity 280ms ease}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ :root[data-theme=vibrant] .tabs>button:hover::after{transform:scaleX(1);opacity:.8}
+ :root[data-theme=vibrant] :is(.tabs>button,.leaderboard-tabs>button,.sport-picker>button):hover{transform:translateY(-1px)}
+ :root[data-theme=vibrant] :is(.category-tile,.game-art):hover{transform:translateY(-3px)}
+ :root[data-theme=vibrant] .category-tile:hover .category-object img{transform:translateY(-3px) rotate(calc(var(--art-tilt) + 2deg)) scale(1.045)}
+ :root[data-theme=vibrant] .category-tile:hover .category-arrow{transform:rotate(12deg)}
+ :root[data-theme=vibrant] .game-art:hover .game-img{transform:scale(1.055)}
+ :root[data-theme=vibrant] :is(.home-promo,.promotion-card,.crash-card):hover{transform:translateY(-2px);border-color:var(--preview-accent);box-shadow:0 8px 22px #0b0c2055}
+ :root[data-theme=vibrant] :is(.match-card:hover,.restored-matches .spotlight-card:hover,.sports-matches .match-card:hover){transform:translateY(-2px);border-color:#8175ac!important;box-shadow:inset 0 1px 0 #ffffff12,0 7px 18px #0b0c2044!important}
+ :root[data-theme=vibrant] :is(.gold-button,.outline-button,.floating-slip):hover{transform:translateY(-2px)}
+}
+/* Keep existing touch behavior and respect both accessibility and the site's motion switch. */
+:root[data-theme=vibrant].motion-paused :is(.category-tile,.game-art,.match-card,.home-promo,.promotion-card,.crash-card,.tabs>button,.leaderboard-tabs>button,.sport-picker>button,.gold-button,.outline-button,.floating-slip):hover{transform:none!important}
+@media(prefers-reduced-motion:reduce){
+ :root[data-theme=vibrant] :is(.promotion-card,.crash-card,.tabs>button,.leaderboard-tabs>button,.sport-picker>button,.outline-button,.floating-slip):hover{transform:none!important}
+}
