@@ -1,0 +1,103 @@
+/* TEMPORARY CLIENT PREVIEW. All rules are scoped; remove this import and its themes.ts entry to retire it.
+   Tokens define the palette; adapters below cover legacy hardcoded colors without changing geometry. */
+:root[data-theme=vibrant]{
+ --preview-page:#171c38;--preview-panel:#222a49;--preview-raised:#2b3457;--preview-hover:#35416c;
+ --preview-line:#48567f;--preview-text:#f0f3ff;--preview-muted:#b6c1df;
+ --preview-accent:#b8a4ff;--preview-cyan:#79e0f2;--preview-pink:#f2a5da;
+ --preview-action:linear-gradient(115deg,#6048c9,#3567c9);
+ --preview-action-hover:linear-gradient(115deg,#7158dc,#4378db);
+ --preview-banner:linear-gradient(120deg,#272754,#204764);
+ --preview-shadow:0 5px 18px #0d123333;
+ --gold:var(--preview-accent);--muted:var(--preview-muted);--panel:var(--preview-panel);--line:var(--preview-line);--green:var(--preview-cyan);
+ color-scheme:dark;color:var(--preview-text);background:var(--preview-page);
+}
+:root[data-theme=vibrant] :is(.topbar,.mobile-nav,.modal,.bet-slip,.history-card,.promotion-card,.leaderboard-card,.toast){background:var(--preview-panel);color:var(--preview-text);border-color:var(--preview-line);box-shadow:var(--preview-shadow)}
+:root[data-theme=vibrant] .demo-strip{background:#262d4b;color:var(--preview-muted)}
+:root[data-theme=vibrant] .polished-sidebar{background:var(--preview-panel);border-color:var(--preview-line)}
+:root[data-theme=vibrant] :is(.top-nav>a,.polished-sidebar .sidebar-item,.mobile-nav>a,.mobile-nav>button){color:var(--preview-muted)}
+:root[data-theme=vibrant] :is(.top-nav>a.active,.mobile-nav>a.active,.section-kicker,.uno-eyebrow,.eyebrow){color:var(--preview-accent)}
+:root[data-theme=vibrant] .polished-sidebar .sidebar-item{--nav-tone:var(--preview-accent)}
+:root[data-theme=vibrant] .polished-sidebar :is(.tone-green,.tone-blue){--nav-tone:var(--preview-cyan)}
+:root[data-theme=vibrant] .polished-sidebar :is(.tone-coral,.tone-rose){--nav-tone:var(--preview-pink)}
+:root[data-theme=vibrant] .polished-sidebar .sidebar-item.active{background:linear-gradient(95deg,#8662ed33,#518cea12);color:var(--preview-text);border-color:#9680e566;box-shadow:inset 2px 0 var(--preview-accent)}
+:root[data-theme=vibrant] .polished-sidebar .sidebar-item.active .sidebar-icon{background:#aa8eff22}
+:root[data-theme=vibrant] :is(.polished-sidebar .sidebar-item:hover,.icon-button:hover,.header-wallet:hover,.search-results button:hover){background:var(--preview-hover);color:var(--preview-text);border-color:var(--preview-line)}
+:root[data-theme=vibrant] :is(.sidebar-label,.sidebar-group-label,.sidebar-locale,.side-age,.sidebar-utilities .sidebar-icon,.nav-chevron,.polished-sidebar .sidebar-heading .sidebar-label){color:var(--preview-muted)}
+:root[data-theme=vibrant] :is(.sidebar-utilities,.account-group,.side-age,.account-options>*,.wallet-asset,.offer-details){border-color:var(--preview-line)}
+:root[data-theme=vibrant] .sidebar-brand-dot{background:var(--preview-accent);box-shadow:0 0 10px #aa8eff33}
+:root[data-theme=vibrant] .polished-sidebar .sidebar-toggle{background:var(--preview-raised);color:var(--preview-muted);border-color:var(--preview-line)}
+:root[data-theme=vibrant] :is(.side-count,.game-icon-dot,.token-pill,.rank-badge,.pending){background:var(--preview-raised);color:var(--preview-accent);border-color:var(--preview-line)}
+:root[data-theme=vibrant] .side-live{background:#204555;color:var(--preview-cyan);border-color:#4ca2b455}
+:root[data-theme=vibrant] :is(.side-live i,.live-pill-badge .pulsing){background:var(--preview-cyan);box-shadow:none}
+:root[data-theme=vibrant] .sidebar-offer{background:linear-gradient(130deg,#393260,#263657);border-color:#8e79c966}
+:root[data-theme=vibrant] .sidebar-offer :is(small,strong,.nav-label>span){color:var(--preview-text)}
+:root[data-theme=vibrant] :is(.sidebar-tooltip,.sidebar-tooltip:before){background:var(--preview-raised);color:var(--preview-text);border-color:var(--preview-line);box-shadow:var(--preview-shadow)}
+:root[data-theme=vibrant] :is(.section-heading p,.game-meta>span,.page-title p,.results-label,.results-label>span,.activity-demo,.footer-bottom,.footer-top,.footer-top>button,.footer-bottom p,.footer-bottom>span:last-child,.search-results small,.slip-empty p,.slip-empty>span,.slip-disclaimer,.wallet-note,.demo-login p,.demo-login small,.account-identity div>span,.deposit-asset div>span,.deposit-balance,.header-wallet small){color:var(--preview-muted)}
+:root[data-theme=vibrant] :is(.section-heading>a,.search-field,.select-wrap,select,.stake-input,.stake-presets button,.header-wallet,.tabs,.sport-picker button,.leaderboard-tabs,.bets-summary,.deposit-asset,.promotion-terms){background:var(--preview-raised);color:var(--preview-text);border-color:var(--preview-line)}
+:root[data-theme=vibrant] :is(input,select){color:var(--preview-text)}
+:root[data-theme=vibrant] input::placeholder{color:var(--preview-muted)}
+:root[data-theme=vibrant] :is(.tabs button,.leaderboard-tabs button){color:var(--preview-muted)}
+:root[data-theme=vibrant] :is(.tabs button.active,.leaderboard-tabs button.active,.sport-picker button.active){background:var(--preview-action);color:#fff;border-color:#9b8de1;box-shadow:0 2px 8px #8560e522}
+:root[data-theme=vibrant] :is(.tabs button:hover,.leaderboard-tabs button:hover,.sport-picker button:hover,.section-heading>a:hover,.stake-presets button:hover){background:var(--preview-hover);color:var(--preview-text);border-color:var(--preview-accent)}
+:root[data-theme=vibrant] :is(.gold-button,.floating-slip){background:var(--preview-action);color:#fff;border-color:#9b8de1;box-shadow:inset 0 1px 0 #ffffff22,0 4px 14px #7352cb22}
+:root[data-theme=vibrant] :is(.gold-button:hover,.floating-slip:hover){background:var(--preview-action-hover);color:#fff;border-color:#c1b2ff}
+:root[data-theme=vibrant] :is(.gold-button:active,.floating-slip:active){background:#5345ad;color:#fff}
+:root[data-theme=vibrant] .floating-slip>span{background:#292953;color:#fff}
+:root[data-theme=vibrant] .outline-button{background:#26345599;color:var(--preview-text);border-color:#8294c2}
+:root[data-theme=vibrant] .outline-button:hover{background:var(--preview-hover);border-color:var(--preview-accent);color:#fff}
+:root[data-theme=vibrant] :is(.header-wallet strong,.crypto-wallet>strong,.deposit-balance>strong){color:var(--preview-cyan)}
+:root[data-theme=vibrant] :is(.match-card,.restored-matches .spotlight-card,.restored-matches .is-live,.restored-matches .is-upcoming,.sports-matches .match-card){background:var(--preview-panel)!important;border-color:var(--preview-line)!important;box-shadow:inset 0 1px 0 #ffffff0a,var(--preview-shadow)!important}
+:root[data-theme=vibrant] .match-card:before{background:linear-gradient(90deg,transparent,#8e7de177,transparent)}
+:root[data-theme=vibrant] :is(.match-top,.spotlight-card .match-top,.match-demo,.restored-matches .match-demo){border-color:var(--preview-line)}
+:root[data-theme=vibrant] :is(.team-name,.teams>div:not(.score)>span:last-child,.sports-matches .team-name){color:var(--preview-text)!important}
+:root[data-theme=vibrant] :is(.score strong,.restored-matches .score strong,.sports-matches .score strong){color:var(--preview-cyan)!important;text-shadow:none}
+:root[data-theme=vibrant] :is(.score small,.league-label,.match-top>span:first-child,.match-demo,.sports-matches .match-demo){color:var(--preview-muted)!important}
+:root[data-theme=vibrant] :is(.live-pill-badge,.spotlight-card .live-pill-badge,.sports-matches .live-pill-badge){background:#244756!important;color:var(--preview-cyan)!important;border-color:#427b91!important;box-shadow:none!important}
+:root[data-theme=vibrant] .upcoming-pill-badge{background:var(--preview-raised)!important;color:var(--preview-muted)!important;border-color:var(--preview-line)!important}
+:root[data-theme=vibrant] .vs-badge{background:var(--preview-raised);color:var(--preview-accent);border-color:var(--preview-line);box-shadow:none}
+:root[data-theme=vibrant] :is(.odds-row button,.restored-matches .odds-row button,.sports-matches .odds-row button){background:var(--preview-raised)!important;border-color:var(--preview-line)!important;box-shadow:inset 0 1px 0 #ffffff08!important}
+:root[data-theme=vibrant] :is(.odds-row button>span,.sports-matches .odds-row button>span){color:var(--preview-muted)!important}
+:root[data-theme=vibrant] :is(.odds-row button>strong,.sports-matches .odds-row button>strong){color:var(--preview-cyan)!important}
+:root[data-theme=vibrant] .odds-row button:hover{background:var(--preview-hover)!important;border-color:var(--preview-accent)!important}
+:root[data-theme=vibrant] .odds-row button.selected{background:var(--preview-action)!important;border-color:#aa99ec!important;box-shadow:0 0 0 1px #aa99ec22!important}
+:root[data-theme=vibrant] .odds-row button.selected>*{color:#fff!important}
+:root[data-theme=vibrant] :is(.leaderboard-header h2,.leaderboard-table td,.cell-game,.cell-bet,.history-selection strong){color:var(--preview-text)}
+:root[data-theme=vibrant] :is(.leaderboard-table th,.cell-player,.cell-mult,.leaderboard-table .negative){color:var(--preview-muted)}
+:root[data-theme=vibrant] :is(.leaderboard-table td,.leaderboard-table th,.leaderboard-header,.history-selection,.history-totals,.slip-selection,footer,.footer-bottom){border-color:var(--preview-line)}
+:root[data-theme=vibrant] .leaderboard-table tr:hover td{background:var(--preview-raised)}
+:root[data-theme=vibrant] :is(.leaderboard-table .cell-profit.positive,.deposit-success,.account-status){color:var(--preview-cyan)}
+:root[data-theme=vibrant] :is(.crypto-wallet,.promo-intro){background:var(--preview-banner);border-color:#6c77a0;color:var(--preview-text);box-shadow:var(--preview-shadow)}
+:root[data-theme=vibrant] :is(.crypto-wallet>div:first-child,.crypto-wallet>span,.wallet-asset small,.promotion-copy>p,.promotion-terms p){color:var(--preview-muted)}
+:root[data-theme=vibrant] :is(.promotion-copy>.eyebrow,.offer-details,.promotion-terms a){color:var(--preview-accent)}
+:root[data-theme=vibrant] .deposit-success{background:#234455}
+:root[data-theme=vibrant] .form-error{color:#ffb0be}
+:root[data-theme=vibrant] :is(.avatar,.login-emblem){background:linear-gradient(140deg,#53418b,#30385c);border-color:#9b8cce;color:#eee7ff}
+/* Original artwork and image rendering stay intact; only surrounding surfaces are themed. */
+:root[data-theme=vibrant] .uno-hero{background:#212342;border-color:#7666a0}
+:root[data-theme=vibrant] .uno-hero:after{background:linear-gradient(90deg,#202346f5 0%,#2527499c 35%,transparent 65%)}
+:root[data-theme=vibrant] .uno-hero h1 em{color:var(--preview-cyan)}
+:root[data-theme=vibrant] :is(.uno-hero-copy>p,.hero-discovery,.hero-art-caption>span:last-child){color:var(--preview-muted)}
+:root[data-theme=vibrant] :is(.hero-art-caption,.hero-kicker){color:var(--preview-accent)}
+:root[data-theme=vibrant] .motion-toggle{background:#232949d9;border-color:var(--preview-line);color:var(--preview-text)}
+:root[data-theme=vibrant] :is(.category-tile,.promotion-card){--tile-light:#b8a4ff;--tile-border:#9781d8;--tile-surface:#493977}
+:root[data-theme=vibrant] :is(.tile-emerald,.tile-emerald.promotion-card){--tile-light:#79e0f2;--tile-border:#4eabbf;--tile-surface:#24586c}
+:root[data-theme=vibrant] :is(.tile-violet,.tile-violet.promotion-card){--tile-light:#e9a4ed;--tile-border:#bb75c4;--tile-surface:#673a73}
+:root[data-theme=vibrant] :is(.tile-coral,.tile-coral.promotion-card){--tile-light:#f2a5da;--tile-border:#c879af;--tile-surface:#65365e}
+:root[data-theme=vibrant] :is(.category-tile,.promotion-art){background:radial-gradient(ellipse at 53% 28%,color-mix(in srgb,var(--tile-light) 24%,transparent),transparent 65%),linear-gradient(140deg,var(--tile-surface),#242b49)}
+:root[data-theme=vibrant] .category-label{background:linear-gradient(0deg,#232a494d,transparent)}
+:root[data-theme=vibrant] .category-arrow{color:#202540}
+:root[data-theme=vibrant] .category-tile:hover .category-arrow{background:var(--tile-light)}
+:root[data-theme=vibrant] :is(.home-promo,.category-banner,.crash-banner){background:var(--preview-banner);border-color:#6978ac}
+:root[data-theme=vibrant] :is(.home-promo.promo-green,.banner-emerald){background:linear-gradient(115deg,#253853,#245d70);border-color:#4a91a2}
+:root[data-theme=vibrant] :is(.banner-violet,.crash-banner){background:linear-gradient(115deg,#303052,#553768);border-color:#9566aa}
+:root[data-theme=vibrant] :is(.home-promo h3,.category-banner h1,.crash-banner h1){color:var(--preview-text)}
+:root[data-theme=vibrant] :is(.category-banner h1 em,.crash-banner h1 em,.home-promo .promo-action,.home-promo .promo-mini-label){color:var(--preview-cyan)}
+:root[data-theme=vibrant] :is(.category-banner p,.banner-demo,.crash-demo,.crash-banner p){color:var(--preview-muted)}
+:root[data-theme=vibrant] :is(.crash-card,.crash-color-1,.crash-color-2,.crash-color-3){background:var(--preview-panel);border-color:var(--preview-line)}
+:root[data-theme=vibrant] .crash-preview>div{background:linear-gradient(0deg,#292d5244,transparent)}
+:root[data-theme=vibrant] :is(.crash-play,.favorite.is-favorite){color:var(--preview-accent)}
+:root[data-theme=vibrant] .game-meta h3{color:var(--preview-text)!important}
+:root[data-theme=vibrant] .game-meta>span{color:var(--preview-muted)!important}
+:root[data-theme=vibrant] .game-art:is(:hover,.active-hover){box-shadow:0 8px 22px #0b123b66,inset 0 0 0 1px #aa8eff66}
+:root[data-theme=vibrant] .game-art .play-overlay{background:linear-gradient(180deg,#1e2346ed,#24234bdb);color:var(--preview-text)}
+:root[data-theme=vibrant] .play-btn-circle{background:#6751b9;border-color:#ae99ff;color:#fff}

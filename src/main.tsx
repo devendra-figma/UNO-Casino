@@ -9,4 +9,5 @@ import './platform-extras.css';
 import './polish.css';
 import './motion.css';
 import './theme.css';
+import './vibrant-preview.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><BrowserRouter><App /></BrowserRouter></React.StrictMode>);

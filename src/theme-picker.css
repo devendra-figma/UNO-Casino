@@ -1,0 +1,4 @@
+/* The temporary picker is a top-layer overlay: it never changes header geometry. */
+.theme-picker{position:fixed;inset:auto;margin:0;padding:6px;width:200px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:inherit;box-shadow:0 8px 24px #0003;max-height:calc(100dvh - 24px);overflow:auto}
+.theme-picker>button{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;padding:10px 12px;border-radius:6px;font-size:13px;gap:12px;text-align:left}
+.theme-picker>button:hover,.theme-picker>button[aria-pressed=true]{color:var(--gold);background:color-mix(in srgb,var(--gold) 12%,transparent)}
