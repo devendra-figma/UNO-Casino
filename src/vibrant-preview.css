@@ -1,18 +1,18 @@
 /* TEMPORARY CLIENT PREVIEW. All rules are scoped; remove this import and its themes.ts entry to retire it.
    Tokens define the palette; adapters below cover legacy hardcoded colors without changing geometry. */
 :root[data-theme=vibrant]{
- --preview-page:#101724;--preview-panel:#171f2f;--preview-raised:#202c40;--preview-hover:#293a52;
- --preview-line:#384a64;--preview-text:#f0f6ff;--preview-muted:#afbdd2;
+ --preview-page:#10141e;--preview-panel:#151b28;--preview-raised:#1a2232;--preview-hover:#222d40;
+ --preview-line:#2a3548;--preview-text:#f0f6ff;--preview-muted:#afbdd2;
  --preview-accent:#64c8ff;--preview-cyan:#74d8ff;--preview-pink:#f2a5da;
  --preview-action:linear-gradient(115deg,#ffffff14,#001c4933);--preview-action-base:#0868c6;
  --preview-action-hover:#1175ce;
- --preview-banner:linear-gradient(120deg,#1b293b,#15364a);
+ --preview-banner:linear-gradient(120deg,#141b27,#16212d);
  --preview-shadow:0 5px 18px #080a1633;
  --gold:var(--preview-accent);--muted:var(--preview-muted);--panel:var(--preview-panel);--line:var(--preview-line);--green:var(--preview-cyan);
  color-scheme:dark;color:var(--preview-text);background:var(--preview-page);
 }
 :root[data-theme=vibrant] :is(.topbar,.mobile-nav,.modal,.bet-slip,.history-card,.promotion-card,.leaderboard-card,.toast){background:var(--preview-panel);color:var(--preview-text);border-color:var(--preview-line);box-shadow:var(--preview-shadow)}
-:root[data-theme=vibrant] .demo-strip{background:#192233;color:var(--preview-muted)}
+:root[data-theme=vibrant] .demo-strip{background:#141a27;color:var(--preview-muted)}
 :root[data-theme=vibrant] .polished-sidebar{background:var(--preview-panel);border-color:var(--preview-line)}
 :root[data-theme=vibrant] :is(.top-nav>a,.polished-sidebar .sidebar-item,.mobile-nav>a,.mobile-nav>button){color:var(--preview-muted)}
 :root[data-theme=vibrant] :is(.top-nav>a.active,.mobile-nav>a.active,.section-kicker,.uno-eyebrow,.eyebrow){color:var(--preview-accent)}
@@ -29,7 +29,7 @@
 :root[data-theme=vibrant] :is(.side-count,.game-icon-dot,.token-pill,.rank-badge,.pending){background:var(--preview-raised);color:var(--preview-accent);border-color:var(--preview-line)}
 :root[data-theme=vibrant] .side-live{background:#204555;color:var(--preview-cyan);border-color:#4ca2b455}
 :root[data-theme=vibrant] :is(.side-live i,.live-pill-badge .pulsing){background:var(--preview-cyan);box-shadow:none}
-:root[data-theme=vibrant] .sidebar-offer{background:linear-gradient(130deg,#183751,#19283e);border-color:#419dca66}
+:root[data-theme=vibrant] .sidebar-offer{background:linear-gradient(130deg,#172331,#141c29);border-color:#419dca66}
 :root[data-theme=vibrant] .sidebar-offer :is(small,strong,.nav-label>span){color:var(--preview-text)}
 :root[data-theme=vibrant] :is(.sidebar-tooltip,.sidebar-tooltip:before){background:var(--preview-raised);color:var(--preview-text);border-color:var(--preview-line);box-shadow:var(--preview-shadow)}
 :root[data-theme=vibrant] :is(.section-heading p,.game-meta>span,.page-title p,.results-label,.results-label>span,.activity-demo,.footer-bottom,.footer-top,.footer-top>button,.footer-bottom p,.footer-bottom>span:last-child,.search-results small,.slip-empty p,.slip-empty>span,.slip-disclaimer,.wallet-note,.demo-login p,.demo-login small,.account-identity div>span,.deposit-asset div>span,.deposit-balance,.header-wallet small){color:var(--preview-muted)}
@@ -73,23 +73,23 @@
 :root[data-theme=vibrant] .form-error{color:#ffb0be}
 :root[data-theme=vibrant] :is(.avatar,.login-emblem){background:linear-gradient(140deg,#1c658b,#203b58);border-color:#5a9cc2;color:#eaf8ff}
 /* Original artwork and image rendering stay intact; only surrounding surfaces are themed. */
-:root[data-theme=vibrant] .uno-hero{background:#151e2c;border-color:#395d7e}
-:root[data-theme=vibrant] .uno-hero:after{background:linear-gradient(90deg,#111c2af5 0%,#1829399c 35%,transparent 65%)}
+:root[data-theme=vibrant] .uno-hero{background:#121923;border-color:#2b3b4e}
+:root[data-theme=vibrant] .uno-hero:after{background:linear-gradient(90deg,#111722f5 0%,#141e299c 35%,transparent 65%)}
 :root[data-theme=vibrant] .uno-hero h1 em{color:var(--preview-cyan)}
 :root[data-theme=vibrant] :is(.uno-hero-copy>p,.hero-discovery,.hero-art-caption>span:last-child){color:var(--preview-muted)}
 :root[data-theme=vibrant] :is(.hero-art-caption,.hero-kicker){color:var(--preview-accent)}
 :root[data-theme=vibrant] .motion-toggle{background:#1b2e44d9;border-color:var(--preview-line);color:var(--preview-text)}
-:root[data-theme=vibrant] :is(.category-tile,.promotion-card){--tile-light:#64c8ff;--tile-border:#398bbd;--tile-surface:#194b70}
-:root[data-theme=vibrant] :is(.tile-emerald,.tile-emerald.promotion-card){--tile-light:#74d8ff;--tile-border:#4eabbf;--tile-surface:#24586c}
-:root[data-theme=vibrant] :is(.tile-violet,.tile-violet.promotion-card){--tile-light:#e9a4ed;--tile-border:#bb75c4;--tile-surface:#673a73}
-:root[data-theme=vibrant] :is(.tile-coral,.tile-coral.promotion-card){--tile-light:#f2a5da;--tile-border:#c879af;--tile-surface:#65365e}
-:root[data-theme=vibrant] :is(.category-tile,.promotion-art){background:radial-gradient(ellipse at 53% 28%,color-mix(in srgb,var(--tile-light) 24%,transparent),transparent 65%),linear-gradient(140deg,var(--tile-surface),#182337)}
+:root[data-theme=vibrant] :is(.category-tile,.promotion-card){--tile-light:#64c8ff;--tile-border:#398bbd;--tile-surface:#162d40}
+:root[data-theme=vibrant] :is(.tile-emerald,.tile-emerald.promotion-card){--tile-light:#74d8ff;--tile-border:#4eabbf;--tile-surface:#183335}
+:root[data-theme=vibrant] :is(.tile-violet,.tile-violet.promotion-card){--tile-light:#e9a4ed;--tile-border:#bb75c4;--tile-surface:#302439}
+:root[data-theme=vibrant] :is(.tile-coral,.tile-coral.promotion-card){--tile-light:#f2a5da;--tile-border:#c879af;--tile-surface:#342435}
+:root[data-theme=vibrant] :is(.category-tile,.promotion-art){background:radial-gradient(ellipse at 53% 28%,color-mix(in srgb,var(--tile-light) 9%,transparent),transparent 65%),linear-gradient(140deg,var(--tile-surface),#121924)}
 :root[data-theme=vibrant] .category-label{background:linear-gradient(0deg,#1523384d,transparent)}
 :root[data-theme=vibrant] .category-arrow{color:#132737}
 :root[data-theme=vibrant] .category-tile:hover .category-arrow{background:var(--tile-light)}
-:root[data-theme=vibrant] :is(.home-promo,.category-banner,.crash-banner){background:var(--preview-banner);border-color:#406e92}
-:root[data-theme=vibrant] :is(.home-promo.promo-green,.banner-emerald){background:linear-gradient(115deg,#253853,#245d70);border-color:#4a91a2}
-:root[data-theme=vibrant] :is(.banner-violet,.crash-banner){background:linear-gradient(115deg,#1c2940,#363049);border-color:#625882}
+:root[data-theme=vibrant] :is(.home-promo,.category-banner,.crash-banner){background:var(--preview-banner);border-color:#304055}
+:root[data-theme=vibrant] :is(.home-promo.promo-green,.banner-emerald){background:linear-gradient(115deg,#141e2a,#172d32);border-color:#30474e}
+:root[data-theme=vibrant] :is(.banner-violet,.crash-banner){background:linear-gradient(115deg,#191d2b,#292332);border-color:#42394c}
 :root[data-theme=vibrant] :is(.home-promo h3,.category-banner h1,.crash-banner h1){color:var(--preview-text)}
 :root[data-theme=vibrant] :is(.category-banner h1 em,.crash-banner h1 em,.home-promo .promo-action,.home-promo .promo-mini-label){color:var(--preview-cyan)}
 :root[data-theme=vibrant] :is(.category-banner p,.banner-demo,.crash-demo,.crash-banner p){color:var(--preview-muted)}
