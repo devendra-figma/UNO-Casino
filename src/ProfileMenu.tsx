@@ -13,7 +13,7 @@ const options = [
   { id: 'logout', label: 'Log out', icon: LogOut },
 ] as const;
 
-export function ProfileMenu({ anchor, onClose, onSelect }: { anchor: HTMLElement; onClose: () => void; onSelect: (section: ProfileSection | 'logout') => void }) {
+export function ProfileMenu({ name, anchor, onClose, onSelect }: { name: string; anchor: HTMLElement; onClose: () => void; onSelect: (section: ProfileSection | 'logout') => void }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const menu = ref.current!;
@@ -37,7 +37,7 @@ export function ProfileMenu({ anchor, onClose, onSelect }: { anchor: HTMLElement
       }
       if (e.key === 'Escape' || e.key === 'Tab') { anchor.focus(); onClose(); }
     }}>
-    <div className="profile-menu-identity"><strong>UNO Player</strong><small>Demo account · This browser</small></div>
+    <div className="profile-menu-identity"><strong>{name}</strong><small>Demo account · This browser</small></div>
     {options.map(({ id, label, icon: Icon }) => <button key={id} role="menuitem" type="button" onClick={() => { anchor.focus(); onSelect(id); }}><Icon size={18}/><span>{label}</span><ChevronRight size={15}/></button>)}
   </div>, document.body);
 }
