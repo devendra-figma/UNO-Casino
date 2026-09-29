@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Bell, Check, ChevronRight, LogOut, Settings, UserRound } from 'lucide-react';
+import { Bell, Check, LogOut, Settings, UserRound } from 'lucide-react';
 import { money, type DemoState } from './data';
 import './profile-menu.css';
 
@@ -38,7 +38,7 @@ export function ProfileMenu({ name, anchor, onClose, onSelect }: { name: string;
       if (e.key === 'Escape' || e.key === 'Tab') { anchor.focus(); onClose(); }
     }}>
     <div className="profile-menu-identity"><strong>{name}</strong><small>Demo account · This browser</small></div>
-    {options.map(({ id, label, icon: Icon }) => <button key={id} role="menuitem" type="button" onClick={() => { anchor.focus(); onSelect(id); }}><Icon size={18}/><span>{label}</span><ChevronRight size={15}/></button>)}
+    {options.map(({ id, label, icon: Icon }) => <button key={id} role="menuitem" type="button" onClick={() => { anchor.focus(); onSelect(id); }}><Icon size={18}/><span>{label}</span></button>)}
   </div>, document.body);
 }
 
