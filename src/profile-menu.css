@@ -1,0 +1,21 @@
+/* New account overlays only; the approved page and trigger geometry stay intact. */
+.profile-menu{position:fixed;inset:auto;margin:0;padding:8px;width:260px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:inherit;box-shadow:0 12px 32px #0003}
+.profile-menu-identity{display:grid;gap:5px;padding:12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.profile-menu-identity small,.profile-panel .muted,.profile-preference small{color:var(--muted)}
+.profile-menu>button{display:flex;align-items:center;gap:12px;width:100%;min-height:46px;padding:10px 12px;text-align:left;border-radius:7px;font-size:14px;transition:background-color .22s,color .22s}
+.profile-menu>button>span{flex:1}
+.profile-menu>button:hover,.profile-menu>button:focus-visible{background:color-mix(in srgb,var(--gold) 12%,transparent);color:var(--gold)}
+.profile-panel{display:grid;gap:20px;font-size:14px}
+.profile-details{margin:0;display:grid;gap:0}
+.profile-details>div{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.profile-details dt{color:var(--muted)}.profile-details dd{margin:0;text-align:right;font-weight:600}
+.profile-notification-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px}
+.profile-text-button{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--gold)}
+.profile-notifications{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.profile-notifications li{display:flex;align-items:flex-start;gap:12px;padding:16px;border:1px solid var(--line);border-radius:9px;background:color-mix(in srgb,var(--muted) 5%,transparent)}
+.profile-notifications li.unread{border-color:color-mix(in srgb,var(--gold) 45%,var(--line))}
+.profile-notifications li>svg{color:var(--gold);margin-top:2px}.profile-notifications p{color:var(--muted);margin:6px 0;overflow-wrap:anywhere}.profile-notifications small{color:var(--muted)}
+.profile-notification-empty{display:grid;gap:12px;justify-items:center;text-align:center;padding:24px 8px}.profile-notification-empty p{color:var(--muted)}
+.profile-preference{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px;border:1px solid var(--line);border-radius:9px;cursor:pointer}
+.profile-preference>span{display:grid;gap:6px}.profile-preference input{width:24px;height:24px;flex-shrink:0;accent-color:var(--gold)}
+@media(prefers-reduced-motion:reduce){.profile-menu>button{transition:none}}
