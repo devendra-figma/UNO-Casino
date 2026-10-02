@@ -10,4 +10,5 @@ import './polish.css';
 import './motion.css';
 import './theme.css';
 import './vibrant-preview.css';
+import './sports-cards.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><BrowserRouter><App /></BrowserRouter></React.StrictMode>);

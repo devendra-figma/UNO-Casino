@@ -1,0 +1,241 @@
+/* Sports page event cards only. Home spotlight cards keep their approved design. */
+.sports-matches .match-card {
+  --sport-surface: radial-gradient(ellipse at 85% 0%, #373123 0%, transparent 54%), linear-gradient(150deg, #202522 0%, #181d1b 100%);
+  --sport-border: #4b483a;
+  --sport-rule: #ffffff16;
+  --sport-raised: linear-gradient(150deg, #2b302c, #232925);
+  --sport-odds-border: #454a3e;
+  --sport-odds-hover: linear-gradient(150deg, #38392d, #292e28);
+  --sport-title: #d8ddd4;
+  --sport-subtle: #9aa59a;
+  --sport-score: #f2eee3;
+  --sport-gold: #e8d19a;
+  background: var(--sport-surface) !important;
+  border: 1px solid var(--sport-border) !important;
+  border-radius: 12px !important;
+  padding: 16px 16px 13px !important;
+  box-shadow: inset 0 1px 0 #ffffff12, 0 9px 24px #0000002b !important;
+  transition: transform 260ms cubic-bezier(.2,.7,.2,1), border-color 260ms ease, box-shadow 260ms ease, background-color 260ms ease;
+}
+.sports-matches .match-card.is-live,
+.sports-matches .match-card.is-upcoming { border-color: var(--sport-border) !important; }
+.sports-matches .match-card .match-top {
+  min-height: 0;
+  padding-bottom: 11px;
+  border-bottom: 1px solid var(--sport-rule);
+}
+.sports-matches .match-card .league-label {
+  color: var(--sport-subtle) !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: .02em;
+}
+.sports-matches .match-card .league-label svg { color: var(--sport-gold) !important; }
+.sports-matches .match-card .teams {
+  align-items: center;
+  padding: 22px 0 19px !important;
+  gap: 7px;
+}
+.sports-matches .match-card .teams > div:not(.score) { gap: 9px; }
+.sports-matches .match-card .team-badge {
+  width: 36px !important;
+  height: 42px !important;
+  border-radius: 9px 9px 17px 17px !important;
+  background: linear-gradient(150deg, #765949, #4c382f) !important;
+  border-color: #9b806c !important;
+  box-shadow: inset 0 1px 0 #ffffff3b, 0 5px 11px #0005 !important;
+}
+.sports-matches .match-card .team-badge.away {
+  background: linear-gradient(150deg, #e2ddcf, #aba593) !important;
+  border-color: #e9dfc9 !important;
+}
+.sports-matches .match-card .badge-f2 {
+  background: linear-gradient(150deg, #e0dbc7, #aaa58f) !important;
+  border-color: #e8dec5 !important;
+}
+.sports-matches .match-card .badge-f2.away {
+  background: linear-gradient(150deg, #823e42, #512b30) !important;
+  border-color: #a75b60 !important;
+}
+.sports-matches .match-card .badge-f3 {
+  background: linear-gradient(150deg, #50817c, #345f5a) !important;
+  border-color: #81aaa3 !important;
+}
+.sports-matches .match-card .badge-f3.away {
+  background: linear-gradient(150deg, #505783, #343a69) !important;
+  border-color: #888cb1 !important;
+}
+.sports-matches .match-card .team-name {
+  color: var(--sport-title) !important;
+  font-size: 11px !important;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.sports-matches .match-card .score {
+  align-self: center;
+  justify-content: center;
+  gap: 6px;
+}
+.sports-matches .match-card .score strong {
+  color: var(--sport-score) !important;
+  font-size: 28px !important;
+  font-weight: 750 !important;
+  letter-spacing: .075em !important;
+  font-variant-numeric: tabular-nums;
+}
+.sports-matches .match-card .score small {
+  color: var(--sport-subtle) !important;
+  font-size: 9px !important;
+  letter-spacing: .015em;
+}
+.sports-matches .match-card .odds-row { gap: 7px !important; }
+.sports-matches .match-card .odds-row button {
+  min-width: 0;
+  min-height: 46px !important;
+  padding: 10px 11px !important;
+  border: 1px solid var(--sport-odds-border) !important;
+  border-radius: 8px !important;
+  background: var(--sport-raised) !important;
+  box-shadow: inset 0 1px 0 #ffffff0b, 0 2px 5px #0000001c !important;
+  transition: transform 220ms cubic-bezier(.2,.7,.2,1), background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+.sports-matches .match-card .odds-row button > span {
+  color: var(--sport-subtle) !important;
+  font-size: 10px !important;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+.sports-matches .match-card .odds-row button > strong {
+  color: var(--sport-gold) !important;
+  font-size: 13px !important;
+  font-weight: 750 !important;
+  font-variant-numeric: tabular-nums;
+}
+.sports-matches .match-card .odds-row button.selected {
+  background: linear-gradient(135deg, #f0d9a2, #bd9659) !important;
+  border-color: #f2dcad !important;
+  box-shadow: inset 0 1px 0 #ffffff70, 0 3px 9px #0003 !important;
+}
+.sports-matches .match-card .odds-row button.selected > span,
+.sports-matches .match-card .odds-row button.selected > strong { color: #28271e !important; }
+.sports-matches .match-card .match-footer { margin-top: 11px; }
+.sports-matches .match-card .match-demo {
+  color: var(--sport-subtle) !important;
+  font-size: 9px !important;
+  opacity: .78;
+}
+.sports-matches .match-card .market-count-link {
+  color: var(--sport-gold);
+  border-color: var(--sport-border);
+  background: #ffffff06;
+  font-size: 11px;
+  font-weight: 700;
+}
+.sports-matches .match-card .market-count-link svg { transition: transform 220ms ease; }
+@media (hover:hover) and (pointer:fine) {
+  .sports-matches .match-card:hover {
+    transform: translateY(-2px) !important;
+    border-color: #75694b !important;
+    box-shadow: inset 0 1px 0 #ffffff1b, 0 14px 28px #0005 !important;
+  }
+  .sports-matches .match-card .odds-row button:hover:not(.selected) {
+    transform: translateY(-1px);
+    background: var(--sport-odds-hover) !important;
+    border-color: #99845d !important;
+    box-shadow: inset 0 1px 0 #ffffff17, 0 5px 11px #0004 !important;
+  }
+  .sports-matches .match-card .market-count-link:hover {
+    color: var(--sport-gold);
+    border-color: #99845d;
+    background: #d6b87914;
+  }
+  .sports-matches .match-card .market-count-link:hover svg { transform: translateX(2px); }
+}
+:root[data-theme=light] .sports-matches .match-card {
+  --sport-surface: radial-gradient(ellipse at 85% 0%, #f9f5e9, transparent 58%), linear-gradient(150deg, #f4f7f0, #e8efe7);
+  --sport-border: #afc1ac;
+  --sport-rule: #bdcebb;
+  --sport-raised: linear-gradient(150deg, #fff, #f4f5ed);
+  --sport-odds-border: #b7c9b4;
+  --sport-odds-hover: linear-gradient(150deg, #fffaf0, #eee9d9);
+  --sport-title: #2c3b2d;
+  --sport-subtle: #586d5a;
+  --sport-score: #28543a;
+  --sport-gold: #795922;
+  box-shadow: inset 0 1px 0 #fff, 0 9px 22px #34472a1c !important;
+}
+:root[data-theme=vibrant] .sports-matches .match-card {
+  --sport-surface: radial-gradient(ellipse at 85% 0%, #26344c, transparent 55%), linear-gradient(150deg, #1b2536, #161d2b);
+  --sport-border: #40516a;
+  --sport-rule: #ffffff19;
+  --sport-raised: linear-gradient(150deg, #2b3951, #222e43);
+  --sport-odds-border: #455b75;
+  --sport-odds-hover: linear-gradient(150deg, #344c67, #293a55);
+  --sport-title: #e4edf8;
+  --sport-subtle: #a6b8cb;
+  --sport-score: #f2f5ff;
+  --sport-gold: #87d9ff;
+  box-shadow: inset 0 1px 0 #ffffff15, 0 9px 24px #080e2052 !important;
+}
+:root[data-theme=light] .sports-matches .match-card,
+:root[data-theme=vibrant] .sports-matches .match-card {
+  background: var(--sport-surface) !important;
+  border-color: var(--sport-border) !important;
+}
+:root[data-theme=light] .sports-matches .match-card .team-name,
+:root[data-theme=vibrant] .sports-matches .match-card .team-name { color: var(--sport-title) !important; }
+:root[data-theme=light] .sports-matches .match-card .score strong,
+:root[data-theme=vibrant] .sports-matches .match-card .score strong { color: var(--sport-score) !important; }
+:root[data-theme=light] .sports-matches .match-card .score small,
+:root[data-theme=vibrant] .sports-matches .match-card .score small,
+:root[data-theme=light] .sports-matches .match-card .league-label,
+:root[data-theme=vibrant] .sports-matches .match-card .league-label,
+:root[data-theme=light] .sports-matches .match-card .match-demo,
+:root[data-theme=vibrant] .sports-matches .match-card .match-demo { color: var(--sport-subtle) !important; }
+:root[data-theme=light] .sports-matches .match-card .odds-row button,
+:root[data-theme=vibrant] .sports-matches .match-card .odds-row button {
+  background: var(--sport-raised) !important;
+  border-color: var(--sport-odds-border) !important;
+  box-shadow: inset 0 1px 0 #ffffff19, 0 2px 5px #00000012 !important;
+}
+:root[data-theme=light] .sports-matches .match-card .odds-row button > span,
+:root[data-theme=vibrant] .sports-matches .match-card .odds-row button > span { color: var(--sport-subtle) !important; }
+:root[data-theme=light] .sports-matches .match-card .odds-row button > strong,
+:root[data-theme=vibrant] .sports-matches .match-card .odds-row button > strong { color: var(--sport-gold) !important; }
+@media (hover:hover) and (pointer:fine) {
+  :root[data-theme=light] .sports-matches .match-card:hover {
+    border-color: #899d85 !important;
+    box-shadow: inset 0 1px 0 #fff, 0 13px 26px #34472a2b !important;
+  }
+  :root[data-theme=vibrant] .sports-matches .match-card:hover {
+    border-color: #6397bd !important;
+    box-shadow: inset 0 1px 0 #ffffff21, 0 13px 28px #080e2070 !important;
+  }
+  :root[data-theme=light] .sports-matches .match-card .odds-row button:hover:not(.selected) { border-color: #a38a59 !important; }
+  :root[data-theme=vibrant] .sports-matches .match-card .odds-row button:hover:not(.selected) { border-color: #68b8e4 !important; }
+}
+:root[data-theme=vibrant] .sports-matches .match-card .odds-row button.selected {
+  background: linear-gradient(135deg, #2496dc, #665de0) !important;
+  border-color: #70c9f4 !important;
+}
+:root[data-theme=light] .sports-matches .match-card .odds-row button.selected {
+  background: linear-gradient(135deg, #efdba9, #c6a669) !important;
+  border-color: #a98950 !important;
+}
+:root[data-theme=light] .sports-matches .match-card .odds-row button.selected > span,
+:root[data-theme=light] .sports-matches .match-card .odds-row button.selected > strong { color: #28271e !important; }
+:root[data-theme=vibrant] .sports-matches .match-card .odds-row button.selected > span,
+:root[data-theme=vibrant] .sports-matches .match-card .odds-row button.selected > strong { color: #fff !important; }
+@media (max-width:700px) {
+  .sports-matches .match-card { padding: 16px !important; }
+  .sports-matches .match-card .teams { padding: 20px 0 18px !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .sports-matches .match-card,
+  .sports-matches .match-card .odds-row button,
+  .sports-matches .match-card .market-count-link svg { transition: none !important; }
+  .sports-matches .match-card:hover,
+  .sports-matches .match-card .odds-row button:hover { transform: none !important; }
+}
+:root.motion-paused .sports-matches .match-card:hover,
+:root.motion-paused .sports-matches .match-card .odds-row button:hover { transform: none !important; }
