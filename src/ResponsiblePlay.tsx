@@ -1,0 +1,49 @@
+import { useState } from 'react';
+import { Ban, Clock, Coins, PauseCircle, ShieldCheck } from 'lucide-react';
+import { money } from './data';
+import { periodRange, updateLimit, usedAmount, playBlock, type LimitKind, type LimitPeriod, type ResponsibleState } from './responsible-play';
+import './responsible-play.css';
+
+const kinds: {id:LimitKind;title:string;description:string}[]=[
+  {id:'deposit',title:'Deposit limits',description:'Set how much demo value can be added to your wallet.'},
+  {id:'wager',title:'Betting limits',description:'Set a maximum total stake across demo bets.'},
+  {id:'loss',title:'Loss limits',description:'Stop new bets after settled demo losses reach your limit.'},
+];
+const periods:LimitPeriod[]=['daily','weekly','monthly'];
+const labels:Record<LimitPeriod,string>={daily:'Daily',weekly:'Weekly',monthly:'Monthly'};
+
+type ResponsibleTab = 'financial' | 'session' | 'cooling' | 'exclusion';
+
+type Props={state:ResponsibleState;onChange:(state:ResponsibleState)=>void;storageError:boolean};
+export function ResponsiblePlay({state,onChange,storageError}:Props){
+  const [activeTab, setActiveTab] = useState<ResponsibleTab>('financial');
+  const [draft,setDraft]=useState(()=>Object.fromEntries(kinds.flatMap(k=>periods.map(p=>[`${k.id}-${p}`,state.limits[k.id][p]?.toString()||'']))) as Record<string,string>);
+  const [message,setMessage]=useState('');const [customSession,setCustomSession]=useState('120');const [coolingChoice,setCoolingChoice]=useState<number|null>(null);const [excludeStep,setExcludeStep]=useState(false);const [excludeText,setExcludeText]=useState('');
+  const now=new Date();const block=playBlock(state,now);
+  const saveLimits=()=>{try{let next=state;for(const kind of kinds)for(const period of periods){const raw=draft[`${kind.id}-${period}`]?.trim()||'';const value=raw===''?null:Number(raw);next=updateLimit(next,kind.id,period,value);}onChange(next);setMessage('Demo limits saved in this browser.');}catch(e){setMessage((e as Error).message)}};
+  const setSession=(value:string)=>{if(value==='custom'){const minutes=Number(customSession);if(!Number.isInteger(minutes)||minutes<15||minutes>480){setMessage('Choose a custom session from 15 to 480 minutes.');return;}onChange({...state,sessionMinutes:minutes,sessionStartedAt:new Date().toISOString()});}else onChange({...state,sessionMinutes:value==='off'?null:Number(value),sessionStartedAt:new Date().toISOString()});setMessage('Session limit saved for this browser.');};
+  return <section className="account-screen responsible-page"><div className="page-title"><span className="eyebrow">YOUR WELLBEING</span><h1>Responsible gambling<span>.</span></h1><p>Set boundaries for this virtual-funds demo. These controls are stored only in your browser.</p></div>
+  <nav className="account-screen-tabs" aria-label="Responsible Gambling sections">
+    <button type="button" className={activeTab==='financial'?'active':''} onClick={()=>setActiveTab('financial')}><Coins size={18}/> Financial Limits</button>
+    <button type="button" className={activeTab==='session'?'active':''} onClick={()=>setActiveTab('session')}><Clock size={18}/> Session & Reality Checks</button>
+    <button type="button" className={activeTab==='cooling'?'active':''} onClick={()=>setActiveTab('cooling')}><PauseCircle size={18}/> Cooling-Off</button>
+    <button type="button" className={activeTab==='exclusion'?'active':''} onClick={()=>setActiveTab('exclusion')}><Ban size={18}/> Self-Exclusion</button>
+  </nav>
+  <div className="responsible-intro"><ShieldCheck size={25}/><div><strong>Keep play in perspective</strong><p>Adults only, 18+. Take breaks, never chase losses, and seek local support if gambling causes concern. This prototype has no real-money wagering.</p></div></div>{block&&<div className="responsible-warning" role="alert">{block}</div>}
+  {activeTab==='financial'&&(
+    <section className="responsible-panel"><h2>Financial limits</h2><p>Leave a field blank for no limit. Current usage is based on activity recorded since these demo controls were enabled.</p>{kinds.map(kind=><div className="responsible-limit-group" key={kind.id}><h3>{kind.title}</h3><p>{kind.description}</p><div className="responsible-period-grid">{periods.map(period=>{const limit=state.limits[kind.id][period];const used=usedAmount(state,kind.id,period,now);return <div className="responsible-period" key={period}><label htmlFor={`${kind.id}-${period}`}>{labels[period]} limit · USD</label><input id={`${kind.id}-${period}`} inputMode="decimal" type="number" min="0.01" step="0.01" placeholder="No limit" value={draft[`${kind.id}-${period}`]} onChange={e=>setDraft({...draft,[`${kind.id}-${period}`]:e.target.value})}/>{limit!==null?<dl><div><dt>Current limit</dt><dd>{money(limit)}</dd></div><div><dt>Used</dt><dd>{money(used)}</dd></div><div><dt>Remaining</dt><dd>{money(Math.max(0,limit-used))}</dd></div><div><dt>Resets</dt><dd>{periodRange(period,now).reset.toLocaleString()}</dd></div></dl>:<span className="responsible-unset">No active {period} limit</span>}</div>})}</div></div>)}<button className="gold-button" onClick={saveLimits}>Save limits</button></section>
+  )}
+  {activeTab==='session'&&(
+    <>
+      <section className="responsible-panel"><h2>Session limit</h2><p>Demo betting and wallet actions pause when your selected session time ends.</p><label htmlFor="session-limit">Maximum session</label><select id="session-limit" value={state.sessionMinutes===null?'off':[30,60,90].includes(state.sessionMinutes)?String(state.sessionMinutes):'custom'} onChange={e=>{if(e.target.value!=='custom')setSession(e.target.value)}}><option value="off">No session limit</option><option value="30">30 minutes</option><option value="60">60 minutes</option><option value="90">90 minutes</option><option value="custom">Custom</option></select><div className="responsible-inline"><label htmlFor="custom-session">Custom minutes</label><input id="custom-session" type="number" min="15" max="480" step="1" value={customSession} onChange={e=>setCustomSession(e.target.value)}/><button className="outline-button" onClick={()=>setSession('custom')}>Set custom</button></div>{state.sessionMinutes!==null&&<p className="responsible-note">Current limit: {state.sessionMinutes} minutes · Started {new Date(state.sessionStartedAt).toLocaleString()}</p>}</section>
+      <section className="responsible-panel"><h2>Reality checks</h2><p>Show a reminder while this page is open at your chosen interval.</p><label htmlFor="reality-check">Reminder interval</label><select id="reality-check" value={state.realityMinutes??'off'} onChange={e=>{const value=e.target.value;onChange({...state,realityMinutes:value==='off'?null:Number(value),lastRealityAt:new Date().toISOString()});setMessage('Reality check preference saved.')}}><option value="off">Off</option><option value="15">Every 15 minutes</option><option value="30">Every 30 minutes</option><option value="60">Every 60 minutes</option></select></section>
+    </>
+  )}
+  {activeTab==='cooling'&&(
+    <section className="responsible-panel"><h2>Cooling-off</h2><p>Pause demo betting and wallet top-ups immediately. A cooling-off period cannot be cancelled in this interface.</p>{state.coolingUntil&&new Date(state.coolingUntil)>now?<div className="responsible-warning">Active until {new Date(state.coolingUntil).toLocaleString()}</div>:<><div className="responsible-choice">{[[1,'24 hours'],[7,'7 days'],[30,'30 days']].map(([days,label])=><button key={days} className={coolingChoice===days?'active':''} onClick={()=>setCoolingChoice(Number(days))}>{label}</button>)}</div>{coolingChoice!==null&&<div className="responsible-confirm"><p>Confirm {coolingChoice===1?'24 hours':`${coolingChoice} days`} of cooling-off? This immediately blocks demo deposits and bets.</p><button className="outline-button" onClick={()=>setCoolingChoice(null)}>Keep current setting</button><button className="gold-button" onClick={()=>{const until=new Date();until.setDate(until.getDate()+coolingChoice);onChange({...state,coolingUntil:until.toISOString()});setCoolingChoice(null);setMessage('Cooling-off is active.');}}>Start cooling-off</button></div>}</>}</section>
+  )}
+  {activeTab==='exclusion'&&(
+    <section className="responsible-panel responsible-exclusion"><h2>Self-exclusion</h2><p>This immediately blocks demo deposits and bets on this browser, with no in-app reversal. It is a local preview and cannot provide real account-wide exclusion.</p>{state.excludedAt?<div className="responsible-warning" role="status">Self-exclusion active since {new Date(state.excludedAt).toLocaleString()}.</div>:!excludeStep?<button className="outline-button" onClick={()=>setExcludeStep(true)}>Start self-exclusion</button>:<div className="responsible-confirm"><strong>Are you sure?</strong><p>Type EXCLUDE to confirm. You will not be able to place demo bets or add demo wallet funds here.</p><label htmlFor="exclude-confirm">Confirmation word</label><input id="exclude-confirm" value={excludeText} onChange={e=>setExcludeText(e.target.value)} autoComplete="off"/><div><button className="outline-button" onClick={()=>{setExcludeStep(false);setExcludeText('')}}>Cancel</button><button className="gold-button" disabled={excludeText!=='EXCLUDE'} onClick={()=>{onChange({...state,excludedAt:new Date().toISOString()});setExcludeStep(false);setExcludeText('');setMessage('Self-exclusion is now active in this browser.')}}>Confirm self-exclusion</button></div></div>}</section>
+  )}
+  <p className="responsible-note">Demo/local controls can be bypassed by clearing browser storage or using another device. Production limits, cooling-off, and self-exclusion require secure server-side enforcement, identity checks, and operator policy.</p>{message&&<p className="responsible-message" role="status">{message}</p>}{storageError&&<p className="responsible-warning" role="alert">Browser storage is unavailable. These demo controls will reset on reload.</p>}</section>;
+}

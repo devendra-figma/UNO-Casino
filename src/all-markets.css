@@ -173,3 +173,6 @@
   .all-markets-page .market-event-meta>span{min-height:64px;padding:9px 10px;font-size:11px;overflow-wrap:anywhere}
   .all-markets-page .market-event-meta strong{font-size:9px}
 }
+.markets-unavailable{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:28px;margin-bottom:16px}
+.markets-unavailable h3{font-size:18px;margin:0 0 9px}
+.markets-unavailable p{color:var(--muted);font-size:13px}

@@ -1,0 +1,8 @@
+.slip-clear{display:block;margin:4px 0 12px auto;min-height:32px;color:var(--muted);font-size:12px;text-decoration:underline;text-underline-offset:3px}
+.slip-clear:hover{color:var(--gold)}
+.slip-alert{margin-top:9px;padding:9px 10px;border:1px solid var(--gold);border-radius:6px;color:var(--gold);font-size:12px;line-height:1.4}
+.slip-alert button{display:block;min-height:32px;font-weight:700;text-decoration:underline}
+.slip-demo-controls{margin-top:14px;color:var(--muted);font-size:11px}
+.slip-demo-controls summary{cursor:pointer;min-height:30px}
+.slip-demo-controls button{margin:5px 8px 5px 0;min-height:36px;color:var(--gold);text-decoration:underline}
+.slip-limits-link{display:inline-flex;min-height:36px;align-items:center;color:var(--gold);font-size:12px;text-decoration:underline;text-underline-offset:3px}

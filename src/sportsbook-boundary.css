@@ -1,0 +1,6 @@
+.sportsbook-loading{display:grid;gap:18px;max-width:100%;padding:22px 0}
+.sportsbook-skeleton-title,.sportsbook-skeleton-card{border:1px solid var(--line);border-radius:10px;background:linear-gradient(90deg,var(--panel),color-mix(in srgb,var(--panel) 82%,var(--muted)),var(--panel));background-size:200% 100%;animation:sportsbook-skeleton 1.4s ease-in-out infinite}
+.sportsbook-skeleton-title{width:min(360px,80%);height:48px}
+.sportsbook-skeleton-card{width:100%;height:170px}
+@keyframes sportsbook-skeleton{to{background-position-x:-200%}}
+@media(prefers-reduced-motion:reduce){.sportsbook-skeleton-title,.sportsbook-skeleton-card{animation:none}}

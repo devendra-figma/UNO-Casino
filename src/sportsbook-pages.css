@@ -1,0 +1,32 @@
+.sportsbook-page .sports-layout{margin-top:24px}
+.sportsbook-result-section{margin-top:27px}
+.sportsbook-result-section>h2{display:flex;align-items:center;gap:10px;margin:0 0 16px;font-size:20px}
+.sportsbook-result-section>h2 small{font-size:12px;color:var(--muted)}
+.sportsbook-link-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px}
+.sportsbook-link-card{position:relative;min-width:0;border:1px solid var(--line);border-radius:12px;background:var(--panel);transition:border-color .22s ease,transform .22s ease}
+.sportsbook-link-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.sportsbook-link-card>a{display:flex;min-height:126px;padding:18px;flex-direction:column;justify-content:space-between;color:var(--text)}
+.sportsbook-link-card>a>svg{color:var(--gold)}
+.sportsbook-link-card strong{font-size:18px}
+.sportsbook-link-card>a>span{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:12px}
+.sportsbook-link-card .sports-favorite{position:absolute;right:9px;top:9px}
+.sports-favorite{color:var(--gold);min-width:40px;min-height:40px;display:inline-flex;align-items:center;justify-content:center}
+.sports-favorite:hover{color:var(--text)}
+.sportsbook-heading-action{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sportsbook-heading-action>a,.sportsbook-quick-links>a{display:inline-flex;align-items:center;gap:6px;color:var(--gold)}
+.sportsbook-quick-links{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.sportsbook-quick-links>a{min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--panel);transition:border-color .2s ease,background .2s ease}
+.sportsbook-quick-links>a:hover{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 8%,var(--panel))}
+.sportsbook-system-examples{margin:28px 0;color:var(--muted);font-size:12px}
+.sportsbook-system-examples summary{cursor:pointer;min-height:36px}
+.sportsbook-system-examples a{display:inline-flex;margin:6px 14px 6px 0;color:var(--gold)}
+.sports-event-with-favorite{position:relative;min-width:0}
+.sports-event-with-favorite>.sports-favorite{position:absolute;right:14px;top:38px;z-index:1}
+.sportsbook-search-results{display:grid;gap:8px;margin:18px 0}
+.sportsbook-search-results>div{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:5px 10px 5px 16px;border:1px solid var(--line);border-radius:9px;background:var(--panel)}
+.sportsbook-search-results a{display:flex;align-items:center;gap:8px;color:var(--text)}
+.sportsbook-search-results a:hover{color:var(--gold)}
+.sportsbook-search-results span{color:var(--text)}
+@media(max-width:980px){.sportsbook-page .sports-layout{display:block}.sportsbook-page .desktop-slip{display:none}}
+@media(max-width:580px){.sportsbook-link-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sportsbook-link-card>a{min-height:115px;padding:14px}.sportsbook-link-card strong{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.sportsbook-link-card,.sportsbook-quick-links>a{transition:none}.sportsbook-link-card:hover{transform:none}}

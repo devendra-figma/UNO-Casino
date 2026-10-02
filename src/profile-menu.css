@@ -21,10 +21,11 @@
 @media(prefers-reduced-motion:reduce){.profile-menu>button{transition:none}}
 .account-screen{max-width:960px;margin:0 auto}
 .account-screen h1:focus{outline:none}
-.account-screen-tabs{display:flex;gap:8px;margin-bottom:20px;border-bottom:1px solid var(--line)}
-.account-screen-tabs a{display:flex;align-items:center;gap:8px;min-height:48px;padding:12px 20px;color:var(--muted);border-bottom:2px solid transparent}
-.account-screen-tabs a.active{color:var(--gold);border-bottom-color:var(--gold)}
-.account-screen-tabs a:hover{color:var(--gold);background:color-mix(in srgb,var(--gold) 7%,transparent)}
+.account-screen-tabs{display:flex;gap:8px;margin-bottom:20px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.account-screen-tabs::-webkit-scrollbar{display:none}
+.account-screen-tabs a,.account-screen-tabs button{display:flex;align-items:center;gap:8px;min-height:48px;padding:12px 20px;color:var(--muted);background:transparent;border:none;border-bottom:2px solid transparent;font:inherit;cursor:pointer;white-space:nowrap;transition:color .18s,background-color .18s,border-color .18s}
+.account-screen-tabs a.active,.account-screen-tabs button.active{color:var(--gold);border-bottom-color:var(--gold)}
+.account-screen-tabs a:hover,.account-screen-tabs button:hover{color:var(--gold);background:color-mix(in srgb,var(--gold) 7%,transparent)}
 .account-screen-card{padding:28px;border:1px solid var(--line);border-radius:12px;background:var(--panel);display:grid;gap:20px}
 .profile-edit-form{display:grid;gap:24px}
 .profile-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}

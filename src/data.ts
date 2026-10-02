@@ -1,8 +1,9 @@
 import type { MarketGroup } from './markets';
 export interface Game {id:string;name:string;provider:string;category:'Slots'|'Live casino'|'Originals'|'Crash';tile:number;image?:string;tag?:string}
-export interface Fixture {id:string;sport:string;league:string;home:string;away:string;homeCode:string;awayCode:string;live:boolean;time:string;score?:string;odds:number[];kickoffAt?:string;marketGroups?:MarketGroup[]}
-export interface Selection {fixtureId:string;match:string;outcome:string;odds:number;marketId?:string;market?:string}
-export interface DemoBet {id:string;selections:Selection[];stake:number;potential:number;mode:'single'|'accumulator';status:'Pending';createdAt:string}
+export interface Fixture {id:string;sport:string;league:string;home:string;away:string;homeCode:string;awayCode:string;live:boolean;time:string;score?:string;odds:number[];kickoffAt?:string;marketGroups?:MarketGroup[];status?:'finished'|'suspended'}
+export interface Selection {fixtureId:string;match:string;outcome:string;odds:number;marketId?:string;market?:string;oddsChangedFrom?:number;suspended?:boolean}
+export type BetStatus = 'Pending'|'Won'|'Lost'|'Void';
+export interface DemoBet {id:string;selections:Selection[];stake:number;potential:number;mode:'single'|'accumulator';status:BetStatus;createdAt:string;settledAt?:string;actualReturn?:number}
 export interface DemoState {balance:number;favorites:string[];bets:DemoBet[]}
 export const games:Game[]=[
 {id:'vatica',name:'Vatica - Voice of Lost Souls',provider:'UNO Studios',category:'Slots',tile:0,image:'/optimized/Vatica - Voice of Lost Souls.webp',tag:'POPULAR'},
@@ -66,10 +67,19 @@ export function placeBets(state:DemoState,selections:Selection[],stake:number,mo
  if(!selections.length)throw new Error('Choose at least one outcome first.');
  if(!Number.isFinite(stake)||stake<=0||Math.abs(Math.round(stake*100)-stake*100)>1e-7)throw new Error('Enter a positive stake with up to two decimal places.');
  if(new Set(selections.map(s=>s.fixtureId)).size!==selections.length)throw new Error('Choose only one outcome per match.');
+ if(selections.some(s=>s.suspended))throw new Error('Remove the suspended selection before placing a demo bet.');
+ if(selections.some(s=>s.oddsChangedFrom!==undefined))throw new Error('Accept the updated odds before placing a demo bet.');
  const {cost}=quote(selections,stake,mode);if(cost>state.balance)throw new Error('Your demo balance is too low for this stake.');
  const groups=mode==='single'?selections.map(s=>[s]):[selections];
  const bets=groups.map((group,i):DemoBet=>({id:`${Date.now()}-${i}-${Math.random().toString(36).slice(2,7)}`,selections:group,stake,potential:Math.round(quote(group,stake,mode).potential*100)/100,mode,status:'Pending',createdAt:new Date().toISOString()}));
  return {...state,balance:Math.round((state.balance-cost)*100)/100,bets:[...bets,...state.bets]};
+}
+export function settleDemoBet(state:DemoState,id:string,status:Exclude<BetStatus,'Pending'>):DemoState {
+ const bet=state.bets.find(b=>b.id===id);
+ if(!bet)throw new Error('Demo bet not found.');
+ if(bet.status!=='Pending')throw new Error('This demo bet is already settled.');
+ const actualReturn=status==='Won'?bet.potential:status==='Void'?(bet.mode==='single'?bet.stake*bet.selections.length:bet.stake):0;
+ return {...state,balance:Math.round((state.balance+actualReturn)*100)/100,bets:state.bets.map(b=>b.id===id?{...b,status,actualReturn,settledAt:new Date().toISOString()}:b)};
 }
 export function loadState():DemoState {try{const v=JSON.parse(localStorage.getItem('uno-demo-v1')||'null');if(v&&Number.isFinite(v.balance)&&v.balance>=0&&Array.isArray(v.favorites)&&v.favorites.every((x:unknown)=>typeof x==='string')&&Array.isArray(v.bets)&&v.bets.every((b:DemoBet)=>b&&Array.isArray(b.selections)&&Number.isFinite(b.stake)&&Number.isFinite(b.potential)))return v;}catch{/* Fresh demo if storage is unavailable. */}return {...initialState};}
 
