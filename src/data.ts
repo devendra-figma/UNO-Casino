@@ -1,6 +1,7 @@
+import type { MarketGroup } from './markets';
 export interface Game {id:string;name:string;provider:string;category:'Slots'|'Live casino'|'Originals'|'Crash';tile:number;image?:string;tag?:string}
-export interface Fixture {id:string;sport:string;league:string;home:string;away:string;homeCode:string;awayCode:string;live:boolean;time:string;score?:string;odds:number[]}
-export interface Selection {fixtureId:string;match:string;outcome:string;odds:number}
+export interface Fixture {id:string;sport:string;league:string;home:string;away:string;homeCode:string;awayCode:string;live:boolean;time:string;score?:string;odds:number[];kickoffAt?:string;marketGroups?:MarketGroup[]}
+export interface Selection {fixtureId:string;match:string;outcome:string;odds:number;marketId?:string;market?:string}
 export interface DemoBet {id:string;selections:Selection[];stake:number;potential:number;mode:'single'|'accumulator';status:'Pending';createdAt:string}
 export interface DemoState {balance:number;favorites:string[];bets:DemoBet[]}
 export const games:Game[]=[
@@ -44,22 +45,22 @@ export const liveGames:Game[]=[
 {id:'lc-vipbaccarat',name:'VIP Speed Baccarat',provider:'Ember Play',category:'Live casino',tile:5,image:'/optimized/Baccarat 3.webp',tag:'LIVE'},
 ];
 export const fixtures:Fixture[]=[
-{id:'f1',sport:'Football',league:'Premier Division',home:'Northbridge FC',away:'Kingsport United',homeCode:'NFC',awayCode:'KPU',live:true,time:'67′ · 2nd half',score:'2 : 1',odds:[1.85,3.6,4.2]},
-{id:'f2',sport:'Football',league:'European Cup',home:'Real Aurora',away:'Milano City',homeCode:'RAU',awayCode:'MIL',live:true,time:'34′ · 1st half',score:'0 : 0',odds:[2.15,3.25,3.4]},
-{id:'f3',sport:'Football',league:'La Liga Elite',home:'Atletico Central',away:'Valencia Real',homeCode:'ATC',awayCode:'VAL',live:true,time:'58′ · 2nd half',score:'1 : 1',odds:[2.05,3.1,3.6]},
-{id:'f4',sport:'Football',league:'Premier Division',home:'Westhaven Athletic',away:'Eastford Rovers',homeCode:'WHA',awayCode:'EFR',live:false,time:'Today · 20:45',odds:[2.4,3.1,2.9]},
-{id:'f5',sport:'Football',league:'European Cup',home:'Lisbon Stars',away:'Bavaria Sporting',homeCode:'LIS',awayCode:'BAV',live:false,time:'Tomorrow · 19:30',odds:[2.6,3.4,2.5]},
-{id:'f6',sport:'Football',league:'Serie Masters',home:'Torino FC',away:'Napoli United',homeCode:'TOR',awayCode:'NAP',live:false,time:'Tomorrow · 21:00',odds:[1.95,3.3,3.8]},
-{id:'f7',sport:'Basketball',league:'National League',home:'Harbor Hawks',away:'Summit Wolves',homeCode:'HWK',awayCode:'WLV',live:true,time:'Q3 · 05:42',score:'72 : 68',odds:[1.65,2.3]},
-{id:'f8',sport:'Basketball',league:'Euro League',home:'Madrid Basket',away:'Athens City',homeCode:'MAD',awayCode:'ATH',live:true,time:'Q4 · 02:15',score:'84 : 81',odds:[1.8,2.05]},
-{id:'f9',sport:'Basketball',league:'Pro Cup',home:'Chicago Strikers',away:'Boston Knights',homeCode:'CHI',awayCode:'BOS',live:true,time:'Q2 · 08:10',score:'45 : 42',odds:[1.9,1.9]},
-{id:'f10',sport:'Tennis',league:'Open Series',home:'Alex Marin',away:'Luca Vale',homeCode:'MAR',awayCode:'VAL',live:true,time:'Set 2 · 4:3',score:'1 : 0',odds:[1.72,2.1]},
-{id:'f11',sport:'Tennis',league:'Grand Slam',home:'Carlos Santos',away:'Novak V',homeCode:'SAN',awayCode:'NOV',live:true,time:'Set 3 · 2:2',score:'1 : 1',odds:[1.85,1.95]},
-{id:'f12',sport:'Tennis',league:'World Tour',home:'Stefanos T',away:'Daniil M',homeCode:'STE',awayCode:'DAN',live:true,time:'Set 1 · 5:4',score:'0 : 0',odds:[2.1,1.75]},
+{id:'f1',kickoffAt:'2026-10-02T16:30:00Z',sport:'Football',league:'Premier Division',home:'Northbridge FC',away:'Kingsport United',homeCode:'NFC',awayCode:'KPU',live:true,time:'67′ · 2nd half',score:'2 : 1',odds:[1.85,3.6,4.2]},
+{id:'f2',kickoffAt:'2026-10-02T17:30:00Z',sport:'Football',league:'European Cup',home:'Real Aurora',away:'Milano City',homeCode:'RAU',awayCode:'MIL',live:true,time:'34′ · 1st half',score:'0 : 0',odds:[2.15,3.25,3.4]},
+{id:'f3',kickoffAt:'2026-10-02T16:45:00Z',sport:'Football',league:'La Liga Elite',home:'Atletico Central',away:'Valencia Real',homeCode:'ATC',awayCode:'VAL',live:true,time:'58′ · 2nd half',score:'1 : 1',odds:[2.05,3.1,3.6]},
+{id:'f4',kickoffAt:'2026-10-03T19:45:00Z',sport:'Football',league:'Premier Division',home:'Westhaven Athletic',away:'Eastford Rovers',homeCode:'WHA',awayCode:'EFR',live:false,time:'Today · 20:45',odds:[2.4,3.1,2.9]},
+{id:'f5',kickoffAt:'2026-10-04T18:30:00Z',sport:'Football',league:'European Cup',home:'Lisbon Stars',away:'Bavaria Sporting',homeCode:'LIS',awayCode:'BAV',live:false,time:'Tomorrow · 19:30',odds:[2.6,3.4,2.5]},
+{id:'f6',kickoffAt:'2026-10-04T20:00:00Z',sport:'Football',league:'Serie Masters',home:'Torino FC',away:'Napoli United',homeCode:'TOR',awayCode:'NAP',live:false,time:'Tomorrow · 21:00',odds:[1.95,3.3,3.8]},
+{id:'f7',kickoffAt:'2026-10-02T16:00:00Z',sport:'Basketball',league:'National League',home:'Harbor Hawks',away:'Summit Wolves',homeCode:'HWK',awayCode:'WLV',live:true,time:'Q3 · 05:42',score:'72 : 68',odds:[1.65,2.3]},
+{id:'f8',kickoffAt:'2026-10-02T18:00:00Z',sport:'Basketball',league:'Euro League',home:'Madrid Basket',away:'Athens City',homeCode:'MAD',awayCode:'ATH',live:true,time:'Q4 · 02:15',score:'84 : 81',odds:[1.8,2.05]},
+{id:'f9',kickoffAt:'2026-10-02T17:15:00Z',sport:'Basketball',league:'Pro Cup',home:'Chicago Strikers',away:'Boston Knights',homeCode:'CHI',awayCode:'BOS',live:true,time:'Q2 · 08:10',score:'45 : 42',odds:[1.9,1.9]},
+{id:'f10',kickoffAt:'2026-10-02T13:30:00Z',sport:'Tennis',league:'Open Series',home:'Alex Marin',away:'Luca Vale',homeCode:'MAR',awayCode:'VAL',live:true,time:'Set 2 · 4:3',score:'1 : 0',odds:[1.72,2.1]},
+{id:'f11',kickoffAt:'2026-10-02T14:30:00Z',sport:'Tennis',league:'Grand Slam',home:'Carlos Santos',away:'Novak V',homeCode:'SAN',awayCode:'NOV',live:true,time:'Set 3 · 2:2',score:'1 : 1',odds:[1.85,1.95]},
+{id:'f12',kickoffAt:'2026-10-02T16:00:00Z',sport:'Tennis',league:'World Tour',home:'Stefanos T',away:'Daniil M',homeCode:'STE',awayCode:'DAN',live:true,time:'Set 1 · 5:4',score:'0 : 0',odds:[2.1,1.75]},
 ];
 export const initialState:DemoState={balance:1000,favorites:[],bets:[]};
 export const money=(n:number)=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n);
-export function toggleSelection(current:Selection[],next:Selection):Selection[]{const old=current.find(s=>s.fixtureId===next.fixtureId);return [...current.filter(s=>s.fixtureId!==next.fixtureId),...(old?.outcome===next.outcome?[]:[next])];}
+export function toggleSelection(current:Selection[],next:Selection):Selection[]{const old=current.find(s=>s.fixtureId===next.fixtureId);const same=old?.outcome===next.outcome&&(old?.marketId||'match-winner')===(next.marketId||'match-winner');return [...current.filter(s=>s.fixtureId!==next.fixtureId),...(same?[]:[next])];}
 export function quote(selections:Selection[],stake:number,mode:'single'|'accumulator') {return {cost:mode==='single'?stake*selections.length:stake,potential:mode==='single'?selections.reduce((n,s)=>n+stake*s.odds,0):stake*selections.reduce((n,s)=>n*s.odds,1)}}
 export function placeBets(state:DemoState,selections:Selection[],stake:number,mode:'single'|'accumulator'):DemoState {
  if(!selections.length)throw new Error('Choose at least one outcome first.');
