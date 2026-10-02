@@ -26,7 +26,7 @@ export function AllMarkets({ selections, choose, slip }: {
       {groups.map((group, index) => <details key={group.id} className="market-group" open={index < 2}>
         <summary><span>{group.title}<small>{group.markets.length} {group.markets.length === 1 ? 'market' : 'markets'}</small></span><ChevronDown size={18}/></summary>
         <div className="market-group-content">{group.markets.map(market => <section className="market-market" key={market.id} aria-label={market.title}>
-          <h3>{market.title}</h3><div className="market-options">{market.options.map(option => {
+          <h3>{market.title}</h3><div className={`market-options${market.options.length === 2 ? ' market-options-two' : ''}`}>{market.options.map(option => {
             const selected = selections.some(s => s.fixtureId === fixture.id && (s.marketId || 'match-winner') === market.id && s.outcome === option.label);
             return <button key={option.id} className={selected ? 'selected' : ''} aria-pressed={selected} aria-label={`${market.title}: ${option.label} at ${option.odds.toFixed(2)}`} onClick={() => choose(fixture, market, option)}><span>{option.label}</span><strong>{option.odds.toFixed(2)}</strong></button>;
           })}</div>
