@@ -2,5 +2,13 @@ node_modules/
 dist/
 .sites-runtime/
 test-results/
+coverage/
+.cache/
+.vite/
+.playwright/
+playwright-report/
 *.tsbuildinfo
+*.log
 .env*
+.DS_Store
+Thumbs.db
