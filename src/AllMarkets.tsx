@@ -18,9 +18,9 @@ export function AllMarkets({ selections, choose, slip }: {
   return <div className="all-markets-page">
     <Link className="markets-back" to="/sports"><ArrowLeft size={17}/> All sports</Link>
     <header className="market-event-header">
-      <div className="market-event-kicker"><span><Trophy size={16}/>{fixture.sport} · {fixture.league}</span><span className={fixture.live ? 'live-text live-pill-badge' : 'muted upcoming-pill-badge'}>{fixture.live ? 'LIVE · DEMO' : 'UPCOMING · DEMO'}</span></div>
-      <h1>{fixture.home} <span>vs</span> {fixture.away}</h1>
-      <div className="market-event-meta"><span><strong>Demo kickoff</strong><time dateTime={fixture.kickoffAt}>{kickoff}</time></span><span><strong>Match clock</strong>{fixture.time}</span>{fixture.score && <span><strong>Demo score</strong>{fixture.score}</span>}</div>
+      <div className="market-event-kicker"><span><Trophy size={16}/>{fixture.sport} · {fixture.league}</span><span className={fixture.live ? 'live-text live-pill-badge' : 'muted upcoming-pill-badge'}>{fixture.live ? 'LIVE' : 'UPCOMING'}</span></div>
+      <h1><span className="market-event-team">{fixture.home}</span><span className="market-event-versus">vs</span><span className="market-event-team">{fixture.away}</span></h1>
+      <div className={fixture.score ? 'market-event-meta' : 'market-event-meta market-event-meta-no-score'}><span><strong>Kickoff</strong><time dateTime={fixture.kickoffAt}>{kickoff}</time></span><span><strong>Match time</strong>{fixture.time}</span>{fixture.score && <span className="market-event-score"><strong>Score</strong>{fixture.score}</span>}</div>
     </header>
     <div className="market-page-layout"><div className="market-groups"><div className="market-groups-heading"><div><span className="eyebrow">FICTIONAL MARKETS · DEMO ODDS</span><h2>All markets</h2></div><span>{additionalMarketCount(fixture)} additional markets</span></div>
       {groups.map((group, index) => <details key={group.id} className="market-group" open={index < 2}>
