@@ -118,18 +118,30 @@
 }
 .sports-matches .match-card .odds-row button.selected > span,
 .sports-matches .match-card .odds-row button.selected > strong { color: #28271e !important; }
-.sports-matches .match-card .match-footer { margin-top: 11px; }
-.sports-matches .match-card .match-demo {
-  color: var(--sport-subtle) !important;
-  font-size: 9px !important;
-  opacity: .78;
+.sports-matches .match-card .match-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  margin-top: 11px;
 }
 .sports-matches .match-card .market-count-link {
+  align-self: center;
+  justify-content: center;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 4px;
   color: var(--sport-gold);
-  border-color: var(--sport-border);
-  background: #ffffff06;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
   font-size: 11px;
   font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: color 220ms ease, text-decoration-color 220ms ease;
 }
 .sports-matches .match-card .market-count-link svg { transition: transform 220ms ease; }
 @media (hover:hover) and (pointer:fine) {
@@ -146,8 +158,10 @@
   }
   .sports-matches .match-card .market-count-link:hover {
     color: var(--sport-gold);
-    border-color: #99845d;
-    background: #d6b87914;
+    border-color: transparent !important;
+    background: transparent !important;
+    text-decoration-color: currentColor;
+    transform: none;
   }
   .sports-matches .match-card .market-count-link:hover svg { transform: translateX(2px); }
 }
@@ -233,6 +247,7 @@
 @media (prefers-reduced-motion:reduce) {
   .sports-matches .match-card,
   .sports-matches .match-card .odds-row button,
+  .sports-matches .match-card .market-count-link,
   .sports-matches .match-card .market-count-link svg { transition: none !important; }
   .sports-matches .match-card:hover,
   .sports-matches .match-card .odds-row button:hover { transform: none !important; }
