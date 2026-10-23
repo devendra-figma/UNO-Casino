@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Check, Settings, UserRound } from 'lucide-react';
+import { Check, FileCheck2, Settings, UserRound } from 'lucide-react';
 import { ProfilePanel, type ProfileSection, useProfilePreferences } from './ProfileMenu';
+import { KycPage } from './ClientPages';
 import { type DemoState } from './data';
 
 export type ProfileDetails = { name: string; email: string; phone: string; country: string };
@@ -25,17 +26,17 @@ export function useProfileDetails() {
 
 type Preferences = ReturnType<typeof useProfilePreferences>['preferences'];
 export function ProfilePage({ section, loggedIn, onLogin, profile, onSave, profileStorageError, state, preferences, onPreferences, storageError }: {
-  section: Exclude<ProfileSection, 'notifications'>; loggedIn: boolean; onLogin: () => void;
+  section: Exclude<ProfileSection, 'notifications'> | 'kyc'; loggedIn: boolean; onLogin: () => void;
   profile: ProfileDetails; onSave: (details: ProfileDetails) => void; profileStorageError: boolean;
   state: DemoState; preferences: Preferences; onPreferences: (value: Preferences) => void; storageError: boolean;
 }) {
   const heading = useRef<HTMLHeadingElement>(null);
   useEffect(() => { heading.current?.focus(); }, [section, loggedIn]);
   return <section className="account-screen">
-    <div className="page-title"><span className="eyebrow">YOUR ACCOUNT · DEMO</span><h1 ref={heading} tabIndex={-1}>{section === 'profile' ? 'Your profile' : 'Account settings'}<span>.</span></h1><p>{section === 'profile' ? 'Manage your name and personal details.' : 'Manage your preferences for this browser.'}</p></div>
+    <div className="page-title"><span className="eyebrow">YOUR ACCOUNT · DEMO</span><h1 ref={heading} tabIndex={-1}>{section === 'profile' ? 'Your profile' : section === 'kyc' ? 'Identity verification' : 'Account settings'}<span>.</span></h1><p>{section === 'profile' ? 'Manage your name and personal details.' : section === 'kyc' ? 'Review the demo verification steps and status.' : 'Manage your preferences for this browser.'}</p></div>
     {!loggedIn ? <div className="account-screen-card"><h2>Sign in to your demo account</h2><p className="muted">Your profile and preferences are stored in this browser.</p><button className="gold-button" onClick={onLogin}>Log in</button></div> : <>
-      <nav className="account-screen-tabs" aria-label="Account sections"><NavLink to="/profile"><UserRound size={18}/> Profile</NavLink><NavLink to="/settings"><Settings size={18}/> Settings</NavLink></nav>
-      <div className="account-screen-card">{section === 'profile' ? <ProfileForm profile={profile} onSave={onSave} storageError={profileStorageError}/> : <ProfilePanel section="settings" state={state} preferences={preferences} onPreferences={onPreferences} storageError={storageError}/>}</div>
+      <nav className="account-screen-tabs" aria-label="Account sections"><NavLink to="/profile"><UserRound size={18}/> Profile</NavLink><NavLink to="/kyc"><FileCheck2 size={18}/> Verification</NavLink><NavLink to="/settings"><Settings size={18}/> Settings</NavLink></nav>
+      {section === 'kyc' ? <KycPage embedded/> : <div className="account-screen-card">{section === 'profile' ? <ProfileForm profile={profile} onSave={onSave} storageError={profileStorageError}/> : <ProfilePanel section="settings" state={state} preferences={preferences} onPreferences={onPreferences} storageError={storageError}/>}</div>}
     </>}
   </section>;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Bell, Check, LogOut, Settings, ShieldCheck, UserRound } from 'lucide-react';
+import { Bell, Check, FileCheck2, LogOut, Settings, ShieldCheck, UserRound, Wallet } from 'lucide-react';
 import { money, type DemoState } from './data';
 import './profile-menu.css';
 
@@ -10,11 +10,13 @@ const options = [
   { id: 'profile', label: 'View profile', icon: UserRound },
   { id: 'notifications', label: 'Notifications', icon: Bell },
   { id: 'settings', label: 'Settings', icon: Settings },
+  { id: 'kyc', label: 'Identity verification', icon: FileCheck2 },
+  { id: 'wallet', label: 'Wallets', icon: Wallet },
   { id: 'responsible-gambling', label: 'Responsible gambling', icon: ShieldCheck },
   { id: 'logout', label: 'Log out', icon: LogOut },
 ] as const;
 
-export function ProfileMenu({ name, anchor, onClose, onSelect }: { name: string; anchor: HTMLElement; onClose: () => void; onSelect: (section: ProfileSection | 'responsible-gambling' | 'logout') => void }) {
+export function ProfileMenu({ name, anchor, onClose, onSelect }: { name: string; anchor: HTMLElement; onClose: () => void; onSelect: (section: ProfileSection | 'kyc' | 'wallet' | 'responsible-gambling' | 'logout') => void }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const menu = ref.current!;
